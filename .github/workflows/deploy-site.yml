@@ -73,11 +73,10 @@ jobs:
         working-directory: site
         run: npm run build
 
-      # enablement turns Pages on if it has not been enabled in repo settings yet.
+      # Requires Pages to be enabled once in repo settings (Settings → Pages →
+      # Source = "GitHub Actions"); the workflow token cannot enable it for you.
       - name: Configure Pages
         uses: actions/configure-pages@v6
-        with:
-          enablement: true
 
       - name: Upload the site artifact
         uses: actions/upload-pages-artifact@v5
