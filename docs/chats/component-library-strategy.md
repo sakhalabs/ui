@@ -103,3 +103,7 @@ not ahead of it — Untitled-UI-level *consistency* without Untitled-UI-level *o
 
 *Status: decision recorded. Goal = **internal consistency, ease, professional look** (not public
 distribution). Revisit when an escalation trigger fires. Recorded 2026-10-19.*
+
+*Gap closed 2026-10-19: repo is now under version control — `git init` (branch `main`), `.gitignore`,
+`.gitattributes`, `CHANGELOG.md` (Keep a Changelog), and a local `v1.0.0` tag. See
+[CHANGELOG.md](../../CHANGELOG.md).*
