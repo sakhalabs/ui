@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Alert, Badge, Button } from '@sakhaui/ui'
+import { Alert, Badge, Button } from '@sakhalabs/ui'
 import { Example, PropsTable } from '../doc/Example'
 
 export function FeedbackSection() {

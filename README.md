@@ -12,10 +12,10 @@ Later, when generating UI with AI tools, you paste the template prompt + the pro
 > [components](docs/components.md) (full props reference),
 > [changelog](CHANGELOG.md) (release history & versioning).
 
-## @sakhaui/ui — the reusable component library
+## @sakhalabs/ui — the reusable component library
 
 The library lives in **`packages/ui/`** as a standalone npm workspace package
-(`@sakhaui/ui` v1.0.0) — install it in any of your projects for consistent design.
+(`@sakhalabs/ui` v1.0.0) — install it in any of your projects for consistent design.
 The showcase app at the repo root is just one of its consumers.
 
 ```bash
@@ -33,15 +33,15 @@ install options and troubleshooting: **[docs/getting-started.md](docs/getting-st
 npm.cmd run build:ui
 
 # 2. in the other project, add a file: dependency (any of these forms)
-npm.cmd i "@sakhaui/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
+npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
 # …or pack a versioned tarball you can commit/archive:
-npm.cmd pack --workspace @sakhaui/ui     # → sakhaui-ui-1.0.0.tgz
+npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.0.0.tgz
 ```
 
 ```tsx
 // then in the consuming app:
-import { Button, NumberInput, Modal, Tabs, ToastProvider, useToast, applyTheme } from '@sakhaui/ui'
-import '@sakhaui/ui/styles.css'   // one CSS file with all component styles
+import { Button, NumberInput, Modal, Tabs, ToastProvider, useToast, applyTheme } from '@sakhalabs/ui'
+import '@sakhalabs/ui/styles.css'   // one CSS file with all component styles
 
 applyTheme('clean', '#4F46E5')      // theme id + accent → sets CSS vars on <html>
 ```

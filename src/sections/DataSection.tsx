@@ -1,4 +1,4 @@
-import { Badge, Button, Card, SearchInput } from '@sakhaui/ui'
+import { Badge, Button, Card, SearchInput } from '@sakhalabs/ui'
 import { Example, PropsTable } from '../doc/Example'
 
 const BILL_ROWS = [

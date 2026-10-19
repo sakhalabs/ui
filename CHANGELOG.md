@@ -1,6 +1,6 @@
 # Changelog
 
-Notable changes to **`@sakhaui/ui`** — the Sakhā Labs component library at [`packages/ui/`](./packages/ui).
+Notable changes to **`@sakhalabs/ui`** — the Sakhā Labs component library at [`packages/ui/`](./packages/ui).
 
 - Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 - Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
@@ -18,9 +18,17 @@ dependencies, still Tailwind-v4 friendly.
 - `FileDrop` — `disabled?: boolean` (blocks picking and dropping)
 - `Tabs` / `TabPanel` — optional `id`; tabs get `aria-controls`, panels get `aria-labelledby`
 - Exported contrast helpers: `contrastText`, `contrastRatio`, `luminance`, `mix`
+- **Publish-ready packaging:** `LICENSE` (MIT) and `packages/ui/README.md` (the npm package page), plus
+  the npm metadata that was missing — `license`, `author`, `keywords`, `engines`, and
+  `repository` / `homepage` / `bugs` (still placeholders until the real repo URL is filled in).
+- **Pre-publish guard** — `npm run preflight` (also runs automatically via `prepublishOnly`) refuses to
+  publish while placeholder URLs remain, the build is missing, or `README` / `LICENSE` are absent.
 
 ### Changed
 
+- **Package renamed `@sakhaui/ui` → `@sakhalabs/ui`.** The scope now names the org rather than the
+  product, leaving room for `@sakhalabs/icons` / `@sakhalabs/tokens` later. Nothing had been published,
+  so there is no migration; the product/marketing name "Sakha UI" is unchanged.
 - **Touch targets** raised to the 44 px mobile minimum: `md` 40 → **44 px**, `sm` 32 → **36**, `lg` 48 → **52**.
   Covers buttons, inputs, selects, tabs, pagination, check/switch rows, sliders and the number stepper.
   Icon-only buttons keep a 44 px hit area via a padded `::after`.
@@ -87,8 +95,8 @@ Initial release — the Sakhā Labs internal design system.
 - Every component is styled only through CSS variables; Clean-SaaS fallback variables (including a `prefers-color-scheme: dark` variant) apply when `applyTheme()` has not run yet
 
 **Packaging**
-- Scoped package **`@sakhaui/ui`**, ESM build + type declarations
-- Single stylesheet at `@sakhaui/ui/styles.css`, shipped inside `@layer components` so Tailwind v4 utilities override component styles while component styles still beat preflight
+- Scoped package **`@sakhalabs/ui`**, ESM build + type declarations
+- Single stylesheet at `@sakhalabs/ui/styles.css`, shipped inside `@layer components` so Tailwind v4 utilities override component styles while component styles still beat preflight
 - Zero runtime dependencies beyond React (peer `react` / `react-dom` ≥ 18)
 - `publishConfig.access: public`
 

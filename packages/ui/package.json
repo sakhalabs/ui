@@ -1,13 +1,48 @@
 {
-  "name": "@sakhaui/ui",
+  "name": "@sakhalabs/ui",
   "version": "1.0.0",
+  "description": "Sakhā Labs React UI component library — CSS-variable themed, bilingual (NE/EN) ready, mobile-first, WCAG AA, zero runtime deps beyond React.",
+  "keywords": [
+    "react",
+    "ui",
+    "component-library",
+    "design-system",
+    "typescript",
+    "css-variables",
+    "theming",
+    "dark-mode",
+    "nepali",
+    "devanagari",
+    "bilingual",
+    "pos",
+    "dashboard",
+    "mobile-first",
+    "accessible",
+    "tailwindcss"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Sakhā Labs"
+  },
+  "homepage": "https://github.com/OWNER/uiux-sakha#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/uiux-sakha.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/OWNER/uiux-sakha/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "description": "Sakhā Labs reusable React UI component library. CSS-variable themed, bilingual (NE/EN) ready, mobile-first, zero runtime deps beyond React.",
   "type": "module",
-  "sideEffects": ["**/*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -21,10 +56,15 @@
     "./ui.css": "./dist/ui.css",
     "./package.json": "./package.json"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "vite build && tsc -p tsconfig.build.json",
     "dev": "vite build --watch",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "preflight": "node scripts/preflight.mjs",
+    "prepublishOnly": "npm run build && npm run preflight"
   },
   "peerDependencies": {
     "react": ">=18",

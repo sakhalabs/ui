@@ -1,4 +1,4 @@
-# Using Tailwind CSS v4 with `@sakhaui/ui`
+# Using Tailwind CSS v4 with `@sakhalabs/ui`
 
 All Sakhā Labs projects use **Tailwind CSS v4**. This is the complete guide for combining it
 with the library: how the two CSS systems coexist, the one import-order rule that matters,
@@ -19,7 +19,7 @@ and an optional bridge that turns the library's theme tokens into Tailwind utili
 ```css
 /* src/index.css */
 @import "tailwindcss";                /* ← declares the layer order first */
-@import "@sakhaui/ui/styles.css";   /* ← library joins the `components` layer */
+@import "@sakhalabs/ui/styles.css";   /* ← library joins the `components` layer */
 ```
 
 The entire library stylesheet ships inside **`@layer components`**. Tailwind v4 declares its
@@ -57,7 +57,7 @@ no rebuild, no class swapping:
 
 ```css
 @import "tailwindcss";
-@import "@sakhaui/ui/styles.css";
+@import "@sakhalabs/ui/styles.css";
 
 @theme inline {
   --color-bg: var(--bg);                /* bg-bg is awkward — see note */
@@ -139,7 +139,7 @@ components, utilities` layer declaration + preflight-style and utility-style rul
 
 | Symptom | Fix |
 |---|---|
-| Buttons/inputs lost their borders or background in a Tailwind project | Import order — `@import "tailwindcss"` **before** `@import "@sakhaui/ui/styles.css"`. |
+| Buttons/inputs lost their borders or background in a Tailwind project | Import order — `@import "tailwindcss"` **before** `@import "@sakhalabs/ui/styles.css"`. |
 | `rounded-full` / `px-8` on a component does nothing | Same import-order issue — in the correct order, utilities always beat the library's `components` layer. |
 | `dark:` classes don't follow the library's Dark theme | Add the `@custom-variant dark` line from section 3. |
 | `bg-surface` etc. don't exist | Add the `@theme inline` block from section 2, and make sure your CSS entry (where it lives) is the one being loaded. |

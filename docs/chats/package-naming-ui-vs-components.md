@@ -1,48 +1,72 @@
-# Package naming: `@sakhaui/ui` vs `@sakhaui/components`
+# Package naming — scope and name: `@sakhalabs/ui`
 
-**Question asked:** `sakhaui/ui` or `sakhaui/components` — which is better?
+**Questions asked (in order):**
 
-**Decision:** keep **`@sakhaui/ui`**.
+1. Scope: `@sakhaui` or `@sakhalabs`?
+2. Name: `ui` or `components`?
+
+**Decisions:**
+
+1. Scope → **`@sakhalabs`** (changed 2026-10-19; supersedes the original `@sakhaui`).
+2. Name → **`ui`** (not `components`).
+
+Final package: **`@sakhalabs/ui`**.
 
 ---
 
-**Keep `@sakhaui/ui`.** Here's the reasoning:
+## Scope decision — `@sakhaui` → `@sakhalabs`
 
-## Why `ui` wins
+The library was originally named `@sakhaui/ui`. It was renamed to `@sakhalabs/ui` **before
+anything was ever published** — the first publish was already blocked on npm org creation,
+so the rename cost a single mechanical pass (25 files, one workspace relink, one rebuild).
 
-| Criterion | `@sakhaui/ui` | `@sakhaui/components` |
+| Criterion | `@sakhaui` | `@sakhalabs` |
 |---|---|---|
-| Ecosystem convention | ✅ The standard suffix for a component/design system (`@shadcn/ui`, `@chakra-ui/react`, `@mui/material`, `@nextui-org/react`) | ⚠️ Literal, but rare as a *package* name |
+| Scope should be the *org*, not the *product* | ❌ Scope duplicates the product name | ✅ Scope = the company (Sakhā Labs) |
+| Reads as redundant | ❌ `@sakhaui/ui` → "sakha-ui ui" | ✅ `@sakhalabs/ui` → company + purpose |
+| Room for a package family | ❌ Boxes you in the moment a second package ships | ✅ `@sakhalabs/icons`, `@sakhalabs/tokens`, `@sakhalabs/templates` |
+| Ecosystem convention | ⚠️ | ✅ `@radix-ui/react`, `@chakra-ui/react` are all `org/product` |
+
+**Branding is unaffected.** The product and the marketing name stay **Sakha UI**; only the
+import string and the npm scope changed. (Compare Radix: *Radix UI* is the product,
+`@radix-ui` is the scope.) Since nothing was published, consumers need no migration.
+
+## Name decision — `ui` vs `components`
+
+| Criterion | `@sakhalabs/ui` | `@sakhalabs/components` |
+|---|---|---|
+| Ecosystem convention | ✅ The standard suffix for a component/design system (`@chakra-ui/react`, `@mui/material`) | ⚠️ Literal, but rare as a package name |
 | Umbrella vs. subset | ✅ "UI" is the umbrella term | ⚠️ "components" is a *subset* of UI — naming the whole thing after one part boxes you in |
-| Fits your repo as-is | ✅ `packages/ui/`, `dist/ui.css`, export `./ui.css` already say "ui" | ❌ Folder and CSS name would no longer match |
+| Fits the repo as-is | ✅ `packages/ui/`, `dist/ui.css`, export `./ui.css` already say "ui" | ❌ Folder and CSS name would no longer match |
 | Import ergonomics | ✅ Shorter | ⚠️ Longer, more literal |
-| AI/tooling familiarity | ✅ Models have seen thousands of `@*/ui` imports → correct import generated more reliably | ⚠️ Less common pattern |
-
-## The redundancy objection
-
-`@sakhaui/ui` reads "sakha-ui ui", which *feels* redundant — but that's completely normal: `@chakra-ui/react`, `@radix-ui/react-slot`, `@mui/material`. Nobody trips on it, and `@sakhalabs/ui` had the same shape.
+| AI/tooling familiarity | ✅ Models have seen thousands of `@*/ui` imports → the correct import is generated more reliably | ⚠️ Less common pattern |
 
 ## When `components` would actually be better
 
-Only if you're planning a **package family where the foundation and the widgets split**:
+Only if you deliberately plan a family where the foundation and the widgets split:
 
 ```
-@sakhaui/tokens      ← variables, themes
-@sakhaui/ui          ← primitives / layout (Box, Stack, Text)
-@sakhaui/components  ← composed widgets (Modal, DataTable, POS screens)
+@sakhalabs/tokens      ← variables, themes
+@sakhalabs/ui          ← primitives / layout (Box, Stack, Text)
+@sakhalabs/components  ← composed widgets (Modal, DataTable, POS screens)
 ```
 
-Even then, most ecosystems still use `ui` for the widget layer and `tokens`/`theme` for the foundation — so `components` is rarely the right top-level pick.
+Even then most ecosystems use `ui` for the widget layer and `tokens`/`theme` for the
+foundation, so `components` is rarely the right top-level pick.
 
 ## A third option worth knowing
 
-Since the scope already says "ui", you could go **framework-named** like Radix/Mantine/Chakra: `@sakhaui/react`. That frees both `ui` and `components` for later. But your package bundles the CSS + tokens alongside the React components, so `ui` describes it more accurately than `react`.
+`@sakhalabs/react` would be framework-named (Radix/Mantine/Chakra style), freeing both `ui`
+and `components` for later. But this package bundles CSS + tokens alongside the React
+components, so `ui` describes it more accurately than `react`.
 
 ## Verdict
 
-- **Now:** stay `@sakhaui/ui` — it's already renamed, built, linked, and verified; changing costs another full pass (18 files + reinstall + rebuild + re-verify) for no functional gain.
-- **`@sakhaui/components`** — only if you're deliberately reserving `ui` for a future foundation package.
+- **Package is `@sakhalabs/ui`** — see `packages/ui/package.json`.
+- Reserve `components` for the case where `ui` is deliberately handed to a future
+  foundation package.
 
 ---
 
-*Status: decided — package is `@sakhaui/ui` (see `packages/ui/package.json`). Recorded 2026-10-19.*
+*Status: decided — `@sakhalabs/ui` (scope `@sakhalabs`, name `ui`). The original scope
+`@sakhaui` was superseded on 2026-10-19 while the package was still unpublished.*

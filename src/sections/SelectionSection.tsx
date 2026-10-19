@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Checkbox, Field, FileDrop, RadioGroup, Select, Slider, Switch } from '@sakhaui/ui'
+import { Checkbox, Field, FileDrop, RadioGroup, Select, Slider, Switch } from '@sakhalabs/ui'
 import { Example, PropsTable } from '../doc/Example'
 
 export function SelectionSection() {

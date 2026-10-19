@@ -1,6 +1,6 @@
 # Sakha UI — Documentation
 
-**`@sakhaui/ui`** is the reusable React component library of Sakhā Labs. One install gives every
+**`@sakhalabs/ui`** is the reusable React component library of Sakhā Labs. One install gives every
 product (PasalSakhā, dashboards, sites, tools) the same components, the same themes and the same
 Nepali/bilingual UX rules — so designs stay consistent and you stop re-building buttons.
 
@@ -15,8 +15,8 @@ Nepali/bilingual UX rules — so designs stay consistent and you stop re-buildin
 ## 30-second preview
 
 ```tsx
-import { ToastProvider, Button, NumberInput, Modal, applyTheme } from '@sakhaui/ui'
-import '@sakhaui/ui/styles.css'
+import { ToastProvider, Button, NumberInput, Modal, applyTheme } from '@sakhalabs/ui'
+import '@sakhalabs/ui/styles.css'
 import { useState } from 'react'
 
 applyTheme('clean', '#4F46E5') // theme + brand accent → all components restyle
@@ -39,7 +39,7 @@ export function App() {
 
 ```
 UIUXSakha/
-├── packages/ui/            ← the library (@sakhaui/ui)
+├── packages/ui/            ← the library (@sakhalabs/ui)
 │   ├── src/                ← component source (TSX) + styles.css + tokens.ts
 │   ├── dist/               ← built output: index.js, index.d.ts, ui.css
 │   └── package.json        ← exports map, scripts

@@ -18,9 +18,9 @@ import {
   Tabs, TabPanel, Modal,
   // theming
   applyTheme, getTheme, getAccent, THEMES, ACCENTS,
-} from '@sakhaui/ui'
+} from '@sakhalabs/ui'
 
-import '@sakhaui/ui/styles.css'   // once, at your app entry
+import '@sakhalabs/ui/styles.css'   // once, at your app entry
 ```
 
 All native HTML attributes are forwarded (e.g. `Input` accepts `placeholder`, `name`, `autoComplete`,
@@ -357,7 +357,7 @@ const [open, setOpen] = useState(false)
 
 ## Gotchas (quick list)
 
-1. **CSS import** — `import '@sakhaui/ui/styles.css'` once, or everything looks unstyled.
+1. **CSS import** — `import '@sakhalabs/ui/styles.css'` once, or everything looks unstyled.
 2. **`applyTheme()`** — call once at startup (safe fallbacks exist, but explicit is better).
 3. **`InputGroup` uses `pre`**, not `prefix` (native HTML owns `prefix`).
 4. **`Input`'s `size`** is `'sm' | 'md' | 'lg'`, not the native number.
@@ -365,7 +365,7 @@ const [open, setOpen] = useState(false)
 6. **`useToast` needs `ToastProvider`** above it in the tree.
 7. **Toast `duration: 0`** = sticky; default auto-dismiss is 4 s.
 8. **Inputs inside `Field`** — the whole block is a `<label>`; don't nest a second label.
-9. **Tailwind v4 projects** — import `tailwindcss` *before* `@sakhaui/ui/styles.css`
+9. **Tailwind v4 projects** — import `tailwindcss` *before* `@sakhalabs/ui/styles.css`
    (the library ships in `@layer components` so utilities override it — see
    [tailwind.md](./tailwind.md)).
 10. **Touch targets** — `md` controls are 44 px tall (the mobile minimum): buttons, inputs,

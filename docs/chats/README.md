@@ -38,6 +38,6 @@ Keep it short and skimmable:
 
 | Record | Subject |
 |---|---|
-| [package-naming-ui-vs-components.md](./package-naming-ui-vs-components.md) | Chose `@sakhaui/ui` over `@sakhaui/components` for the library package name |
-| [component-library-strategy.md](./component-library-strategy.md) | Keep `@sakhaui/ui` as an internal design system — goal: internal consistency, ease, professional look; don't build a full-fledged public library (Untitled UI / MUI style) |
+| [package-naming-ui-vs-components.md](./package-naming-ui-vs-components.md) | Package name → `@sakhalabs/ui` — chose the `ui` name over `components`, and the `sakhalabs` scope over the original `@sakhaui` |
+| [component-library-strategy.md](./component-library-strategy.md) | Keep `@sakhalabs/ui` as an internal design system — goal: internal consistency, ease, professional look; don't build a full-fledged public library (Untitled UI / MUI style) |
 | [touch-targets-and-contrast.md](./touch-targets-and-contrast.md) | Bumped `md` controls to 44px and made contrast *derived* (luminance-based accent ink, `color-mix` tone inks) instead of hand-picked; also records the frozen-transition measurement trap |

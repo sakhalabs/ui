@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Field, Input, InputGroup, NumberInput, PasswordInput, SearchInput, Textarea } from '@sakhaui/ui'
+import { Button, Field, Input, InputGroup, NumberInput, PasswordInput, SearchInput, Textarea } from '@sakhalabs/ui'
 import { Example, PropsTable } from '../doc/Example'
 
 export function InputsSection() {

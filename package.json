@@ -9,11 +9,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:ui": "npm.cmd run build --workspace @sakhaui/ui",
+    "build:ui": "npm.cmd run build --workspace @sakhalabs/ui",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sakhaui/ui": "*",
+    "@sakhalabs/ui": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

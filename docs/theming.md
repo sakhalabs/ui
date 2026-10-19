@@ -1,6 +1,6 @@
 # Theming
 
-Every component in `@sakhaui/ui` is styled **only with CSS variables**. No component hardcodes a
+Every component in `@sakhalabs/ui` is styled **only with CSS variables**. No component hardcodes a
 color, radius, border or font — so switching variables restyles the entire library at once.
 That is what `applyTheme()` does.
 
@@ -38,7 +38,7 @@ Eight brand accents from the Sakhā skins — pass by color (or id) to `applyThe
 ## applyTheme()
 
 ```ts
-import { applyTheme, getTheme, getAccent, THEMES, ACCENTS, type Theme } from '@sakhaui/ui'
+import { applyTheme, getTheme, getAccent, THEMES, ACCENTS, type Theme } from '@sakhalabs/ui'
 
 applyTheme(theme, accent?)
 ```
@@ -55,8 +55,8 @@ applyTheme(theme, accent?)
 
 ```tsx
 // main.tsx / index.tsx, before render
-import { applyTheme } from '@sakhaui/ui'
-import '@sakhaui/ui/styles.css'
+import { applyTheme } from '@sakhalabs/ui'
+import '@sakhalabs/ui/styles.css'
 
 applyTheme('clean', '#4F46E5')
 ```
@@ -129,7 +129,7 @@ automatically between light and dark.
 ### Contrast helpers (exported)
 
 `applyTheme` needs the accent to derive `--accent-contrast`, but sometimes you need the same math
-yourself (charts, canvas, custom badges). These are exported from `@sakhaui/ui`:
+yourself (charts, canvas, custom badges). These are exported from `@sakhalabs/ui`:
 
 | Helper | Signature | Notes |
 |---|---|---|
@@ -139,7 +139,7 @@ yourself (charts, canvas, custom badges). These are exported from `@sakhaui/ui`:
 | `mix(a, b, t)` | `(hex, hex, number) => string` | `t=0` → `a`, `t=1` → `b` (mirrors `color-mix(in srgb, a (1−t), b t)`) |
 
 ```ts
-import { contrastText } from '@sakhaui/ui'
+import { contrastText } from '@sakhalabs/ui'
 
 const label = { background: '#D97706', color: contrastText('#D97706') } // color → '#0b0f17'
 ```
@@ -149,7 +149,7 @@ const label = { background: '#D97706', color: contrastText('#D97706') } // color
 `Theme` objects are plain data — pass one to `applyTheme` to extend or override:
 
 ```ts
-import { applyTheme, getTheme, type Theme } from '@sakhaui/ui'
+import { applyTheme, getTheme, type Theme } from '@sakhalabs/ui'
 
 const myTheme: Theme = {
   ...getTheme('clean'),

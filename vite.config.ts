@@ -9,7 +9,7 @@ export default defineConfig({
     alias: {
       // Dev against package source — no build step needed while developing.
       // Production consumers use the built dist/ via the package exports.
-      '@sakhaui/ui': fileURLToPath(new URL('./packages/ui/src/index.ts', import.meta.url)),
+      '@sakhalabs/ui': fileURLToPath(new URL('./packages/ui/src/index.ts', import.meta.url)),
     },
   },
 })

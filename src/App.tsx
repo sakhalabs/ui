@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ACCENTS, THEMES, ToastProvider, applyTheme } from '@sakhaui/ui'
+import { ACCENTS, THEMES, ToastProvider, applyTheme } from '@sakhalabs/ui'
 import { ButtonsSection } from './sections/ButtonsSection'
 import { InputsSection } from './sections/InputsSection'
 import { SelectionSection } from './sections/SelectionSection'
@@ -55,7 +55,7 @@ export default function App() {
         <aside className="sidebar">
           <div className="brand">
             Sakha UI
-            <small>@sakhaui/ui — component library for Sakhā Labs products</small>
+            <small>@sakhalabs/ui — component library for Sakhā Labs products</small>
           </div>
           <div>
             <p className="sidebar-group-title">Components</p>

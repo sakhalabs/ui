@@ -1,4 +1,4 @@
-# Getting started — using `@sakhaui/ui` in your other projects
+# Getting started — using `@sakhalabs/ui` in your other projects
 
 This is the full workflow for consuming the library from any of your other repos
 (PasalSakhā, the SakhaLabs site, new tools, …). No npm account, no internet — it installs
@@ -38,7 +38,7 @@ Pick one option:
 
 ```bash
 cd C:\path\to\PasalSakhA        # the consuming project
-npm.cmd i "@sakhaui/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
+npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
 ```
 
 Or add it manually to the consuming project's `package.json` (forward slashes, no escaping):
@@ -46,7 +46,7 @@ Or add it manually to the consuming project's `package.json` (forward slashes, n
 ```json
 {
   "dependencies": {
-    "@sakhaui/ui": "file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
+    "@sakhalabs/ui": "file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
   }
 }
 ```
@@ -59,10 +59,10 @@ Better when you want something you can commit, archive, or copy to another machi
 
 ```bash
 # in UIUXSakha:
-npm.cmd pack --workspace @sakhaui/ui     # → sakhaui-ui-1.0.0.tgz
+npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.0.0.tgz
 
 # in the consuming project:
-npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhaui-ui-1.0.0.tgz"
+npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.0.0.tgz"
 ```
 
 This **copies** `dist/` into `node_modules` — stable until you re-pack and reinstall to update.
@@ -77,14 +77,14 @@ source, exactly like the showcase does:
 import { fileURLToPath, URL } from 'node:url'
 resolve: {
   alias: {
-    '@sakhaui/ui': fileURLToPath(new URL('../UIUXSakha/packages/ui/src/index.ts', import.meta.url)),
+    '@sakhalabs/ui': fileURLToPath(new URL('../UIUXSakha/packages/ui/src/index.ts', import.meta.url)),
   },
 }
 ```
 
 ```jsonc
 // tsconfig.json
-"paths": { "@sakhaui/ui": ["../UIUXSakha/packages/ui/src/index.ts"] }
+"paths": { "@sakhalabs/ui": ["../UIUXSakha/packages/ui/src/index.ts"] }
 ```
 
 ---
@@ -94,8 +94,8 @@ resolve: {
 Two imports, once each, near your app entry (`main.tsx` / `index.tsx` / `app/layout.tsx`):
 
 ```tsx
-import { applyTheme, ToastProvider } from '@sakhaui/ui'
-import '@sakhaui/ui/styles.css'          // ← don't forget the CSS!
+import { applyTheme, ToastProvider } from '@sakhalabs/ui'
+import '@sakhalabs/ui/styles.css'          // ← don't forget the CSS!
 
 applyTheme('clean', '#4F46E5')             // theme id + your brand accent
 
@@ -107,7 +107,7 @@ root.render(
 )
 ```
 
-- **`@sakhaui/ui/styles.css`** is a single file — import it exactly once. Importing the JS
+- **`@sakhalabs/ui/styles.css`** is a single file — import it exactly once. Importing the JS
   does *not* auto-load styles (standard library behaviour).
 - **`applyTheme()`** writes the theme CSS variables onto `<html>`. It is SSR-safe (no-op on the
   server) and its inline styles win over the built-in fallbacks, so it also works before hydration.
@@ -119,7 +119,7 @@ root.render(
 ## 4. Use components
 
 ```tsx
-import { Button, Field, Input, NumberInput, Select, Modal, useToast } from '@sakhaui/ui'
+import { Button, Field, Input, NumberInput, Select, Modal, useToast } from '@sakhalabs/ui'
 
 function BillLine() {
   const [qty, setQty] = useState(1)
@@ -156,7 +156,7 @@ All Sakhā Labs projects use Tailwind v4 — the library is fully built for it: 
 ```css
 /* src/index.css — Tailwind FIRST, library second (order matters) */
 @import "tailwindcss";
-@import "@sakhaui/ui/styles.css";
+@import "@sakhalabs/ui/styles.css";
 ```
 
 The full guide — layer model, why the import order matters, the `@theme inline` token bridge
@@ -191,8 +191,8 @@ npm.cmd run build:ui
 - **Option A (`file:`)** → consuming project sees the new build immediately (symlink).
 - **Option B (tarball)** → re-pack and reinstall:
   ```bash
-  npm.cmd pack --workspace @sakhaui/ui
-  npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhaui-ui-1.0.0.tgz" --force
+  npm.cmd pack --workspace @sakhalabs/ui
+  npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.0.0.tgz" --force
   ```
 
 While iterating on components, the fastest loop is running the **showcase** next to your app —
@@ -204,10 +204,10 @@ it hot-reloads the same source: `npm.cmd run dev` → http://localhost:5181.
 
 | Symptom | Fix |
 |---|---|
-| Components render but look unstyled / raw HTML | `import '@sakhaui/ui/styles.css'` is missing or duplicated somewhere else. |
-| In a Tailwind project buttons/inputs lost their borders or looks | Import order: `@import "tailwindcss"` must come **before** `@import "@sakhaui/ui/styles.css"` — see [docs/tailwind.md](./tailwind.md). |
+| Components render but look unstyled / raw HTML | `import '@sakhalabs/ui/styles.css'` is missing or duplicated somewhere else. |
+| In a Tailwind project buttons/inputs lost their borders or looks | Import order: `@import "tailwindcss"` must come **before** `@import "@sakhalabs/ui/styles.css"` — see [docs/tailwind.md](./tailwind.md). |
 | Everything styled but wrong colors/layout | `applyTheme(theme, accent)` never ran — call it once at startup (fallbacks kick in only if you skip it entirely). |
-| `Cannot find module '@sakhaui/ui'` | Run `npm.cmd run build:ui` first (if `dist/` is missing the exports can't resolve), then reinstall. |
+| `Cannot find module '@sakhalabs/ui'` | Run `npm.cmd run build:ui` first (if `dist/` is missing the exports can't resolve), then reinstall. |
 | `ERR_UNKNOWN_FILE_EXTENSION` / ESM errors in Node scripts | Use a bundler, or set `"type": "module"` in the consuming project. |
-| Types missing in the editor | Confirm `packages/ui/dist/index.d.ts` exists (run `build:ui`) and that `node_modules/@sakhaui/ui` resolves — try restarting the TS server. |
+| Types missing in the editor | Confirm `packages/ui/dist/index.d.ts` exists (run `build:ui`) and that `node_modules/@sakhalabs/ui` resolves — try restarting the TS server. |
 | Changes to the library don't appear | `file:` → rebuild the library. Tarball → re-pack + reinstall (see above). |

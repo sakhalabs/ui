@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button } from '@sakhaui/ui'
+import { Button } from '@sakhalabs/ui'
 import { Example, PropsTable } from '../doc/Example'
 
 export function ButtonsSection() {

@@ -1,4 +1,4 @@
-/* @sakhaui/ui — barrel export */
+/* @sakhalabs/ui — barrel export */
 import './styles.css'
 
 /* Primitives */

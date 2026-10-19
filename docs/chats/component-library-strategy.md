@@ -3,7 +3,7 @@
 **Question asked:** Do you suggest making a full-fledged component library for Sakhā Labs products,
 like Untitled UI, Material UI, etc.?
 
-**Decision:** No — don't aim to be Untitled UI/MUI. Yes — keep investing in `@sakhaui/ui` as an
+**Decision:** No — don't aim to be Untitled UI/MUI. Yes — keep investing in `@sakhalabs/ui` as an
 **internal design system** and grow it with product demand.
 
 > **Goal (confirmed):** **internal consistency**, **ease**, and a **professional look** across
@@ -15,7 +15,7 @@ like Untitled UI, Material UI, etc.?
 
 Two very different things get conflated here:
 
-| | **Internal design system** (our `@sakhaui/ui` today) | **Full-fledged public library** (MUI, Untitled UI, Chakra) |
+| | **Internal design system** (our `@sakhalabs/ui` today) | **Full-fledged public library** (MUI, Untitled UI, Chakra) |
 |---|---|---|
 | Built for | Our products | Outside consumers — the library *is* the product |
 | Success metric | How fast/consistently we ship PasalSakhā & co. | Adoption, releases, community |
@@ -86,7 +86,7 @@ Until then, "full-fledged" is overhead with no payer.
   `CHANGELOG.md`**. Cheaper and more valuable than any new component for anything with consumers.
 - **When 2+ products consume it.** Freeze tokens, add a deprecation policy, a simple docs site,
   visual + a11y tests.
-- **Only if external or monetized.** Public npm (`@sakhaui/ui` already has `publishConfig`), semver
+- **Only if external or monetized.** Public npm (`@sakhalabs/ui` already has `publishConfig`), semver
   commitments, Figma kit, contribution guide.
 
 ## If we ever publish
@@ -96,7 +96,7 @@ design system"** — narrow niche, far smaller surface, no existing competitor.
 
 ## Bottom line
 
-Treat `@sakhaui/ui` as **infrastructure for our products**, not as a product. Grow it with demand,
+Treat `@sakhalabs/ui` as **infrastructure for our products**, not as a product. Grow it with demand,
 not ahead of it — Untitled-UI-level *consistency* without Untitled-UI-level *overhead*.
 
 ---

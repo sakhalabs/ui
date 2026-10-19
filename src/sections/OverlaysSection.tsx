@@ -9,7 +9,7 @@ import {
   TabPanel,
   Tabs,
   useToast,
-} from '@sakhaui/ui'
+} from '@sakhalabs/ui'
 import { Example, PropsTable } from '../doc/Example'
 
 export function OverlaysSection() {
