@@ -1,0 +1,161 @@
+{
+  "version": "1.0",
+  "description": "Sakhā Labs UI/UX template catalog. Attach this file as context in AI tools, then use the prompt field of the chosen template plus the globalRules block.",
+  "globalRules": "- Nepali text is often 30-40% longer than English — never truncate or assume fixed widths.\n- Use \"Noto Sans Devanagari\" (or system UI font that renders Devanagari) for body text.\n- Mobile-first: 44px minimum touch targets; works on 360px-wide screens.\n- Light + dark theme from day one; respect prefers-color-scheme.\n- Low-bandwidth: no large images, no video backgrounds, CSS-only decoration.\n- Numbers (currency NPR ₹/रु, dates BS/AD) must be tabular-nums and never wrap.\n- Copy tone: plain, respectful, no jargon. Nepali uses honorific forms (तपाईं).\n- Every screen must work one-handed on a phone.",
+  "productContextTemplate": {
+    "productName": "",
+    "type": "",
+    "users": "",
+    "mainJobs": "",
+    "language": "bilingual — Nepali (Devanagari) + English, user-toggleable",
+    "devices": "Android phones first",
+    "mustWorkOn": "slow networks, low-end Android, light + dark theme",
+    "brandColor": ""
+  },
+  "templates": [
+    {
+      "id": "clean-saas",
+      "name": "Clean Minimal SaaS",
+      "category": "marketing-websites",
+      "description": "Generous whitespace, one accent color, large friendly headings, no decoration for decoration's sake. The default modern SaaS look. Trust through clarity.",
+      "whenToUse": "Default choice for product landing pages, tool websites, docs sites. Works for any audience.",
+      "prompt": "Create a clean minimal SaaS landing page (template: clean-saas).\nWhite background, single accent color [BRAND], dark gray text.\nSticky slim navbar, hero with large headline (48-64px) + one-sentence subheadline\n+ one primary CTA button + product screenshot placeholder. Then: logo strip,\n3 feature cards with icons, 3-step \"how it works\" row, FAQ accordion,\nfinal CTA band, footer. Generous whitespace (96px+ between sections),\nmax-width 1100px, one font family, 8px border radius. No gradients,\nno carousels. Mobile-first responsive, light + dark theme."
+    },
+    {
+      "id": "bold-gradient",
+      "name": "Bold Gradient Hero",
+      "category": "marketing-websites",
+      "description": "Dark hero with vivid multi-color gradient and floating glow shapes, big statement typography, then a light content body below. Feels energetic, modern, AI-era.",
+      "whenToUse": "AI tools, startups wanting to look cutting-edge, launch/campaign pages. Younger/tech audiences.",
+      "prompt": "Create a bold gradient hero landing page (template: bold-gradient).\nDark near-black hero with large blurred CSS radial-gradient blobs\nin [BRAND colors], white oversized headline (700-800 weight),\ngradient primary CTA button. Below hero: light clean body with\nfeature cards (subtle gradient borders), stats row, testimonials,\nfinal gradient CTA band. Gradients must be CSS-only (no images),\nmax 3 colors, performance-friendly blur. Mobile-first, dark theme\nfor hero that transitions to light body."
+    },
+    {
+      "id": "corporate-trust",
+      "name": "Corporate Trust",
+      "category": "marketing-websites",
+      "description": "Structured, conservative, orderly. Navy/dark brand color, boxed sections, statistics, real photos. Feels established and safe.",
+      "whenToUse": "Company sites, fintech/banking/government-facing products, partner/reseller pages, selling to traditional businesses.",
+      "prompt": "Create a corporate trust website page (template: corporate-trust).\nNavy [BRAND] primary color, white body, structured grid layout,\n1px thin-border cards, 4px radius. Navbar with dropdowns, hero with\nphoto placeholder + headline + primary (Contact) and secondary CTA,\nstatistics bar with large tabular numbers, services grid, client\nlogo strip, 2-3 case study cards, prominent contact section with\nphone + WhatsApp, full footer. Nepali/English toggle in navbar.\nProfessional photography placeholders. Mobile-first, light + dark."
+    },
+    {
+      "id": "editorial-story",
+      "name": "Editorial Storytelling",
+      "category": "marketing-websites",
+      "description": "Magazine-style: large serif/bold display headlines, full-bleed imagery, long-form readable text columns, asymmetric layouts. Tells a story rather than listing features.",
+      "whenToUse": "About/origin story pages, impact reports, blog-heavy sites, products with a human story.",
+      "prompt": "Create an editorial storytelling page (template: editorial-story).\nOff-white paper background, near-black text, serif display headlines,\n18-20px body text with 1.7 line-height, narrow 680px reading columns.\nOversized typographic hero, then alternating full-bleed image bands\nand text sections telling a story, pull-quotes, a vertical journey\ntimeline, team strip, closing letter-style CTA. Magazine/asymmetric\nlayout. Restrained single accent color [BRAND]. Mobile-first,\nlight + dark theme."
+    },
+    {
+      "id": "playful-bright",
+      "name": "Playful Bright",
+      "category": "marketing-websites",
+      "description": "Rounded everything, bright flat colors, chunky illustrations, bouncy micro-interactions. Friendly and non-intimidating for non-technical users.",
+      "whenToUse": "Consumer apps, education products, utility apps for first-time internet users, anything that must feel easy and safe.",
+      "prompt": "Create a playful bright landing page (template: playful-bright).\nWarm cream background, flat bright colors (coral, teal, yellow +\n[BRAND]), very round shapes (20-28px card radii, pill buttons),\nchunky CSS/SVG flat illustrations, soft shadows, slight playful\nrotations. Friendly hero with large illustration, icon benefit cards,\n3-step how-it-works with big numbered circles, user quotes,\nlarge pill CTA. Extra-large tap targets, minimal words per screen.\nMobile-first, light + dark theme."
+    },
+    {
+      "id": "neo-brutalist",
+      "name": "Neo-Brutalist",
+      "category": "marketing-websites",
+      "description": "Deliberately raw: thick black borders, hard offset shadows, loud solid color blocks, visible structure. Memorable and honest-feeling.",
+      "whenToUse": "Developer tools, community products, portfolios, brands wanting to stand out from generic AI SaaS pages. Not for corporate-trust audiences.",
+      "prompt": "Create a neo-brutalist landing page (template: neo-brutalist).\nWhite background, pure black 2-3px borders on every element,\nhard offset shadows (4px 4px 0 black, no blur), monospace/grotesque\ntypeface, uppercase labels, solid color blocks (yellow, cyan,\n[BRAND]). Oversized bordered navbar, massive uppercase boxed headline,\nfeature blocks with mechanical press hover (translate + shadow reduce),\nkeyword marquee strip, bordered testimonial/pricing boxes, grid footer.\nNo gradients, no blur, max 4px radius. Mobile-first, light + dark."
+    },
+    {
+      "id": "dense-admin",
+      "name": "Data-Dense Admin Panel",
+      "category": "dashboards-pos",
+      "description": "Classic admin: fixed left sidebar, top bar, big sortable table as main content. Optimized for speed and repeated daily work.",
+      "whenToUse": "Product lists, customer/ledger lists, employee management — screens where users scan, filter and edit many rows daily.",
+      "prompt": "Create a data-dense admin panel screen (template: dense-admin).\nFixed 240px left sidebar with grouped nav, top bar with search,\nnotifications, language (NE/EN) and theme toggles. Main area: page\nheader with title + primary action, filter bar (search, date range,\nstatus chips), then a large sortable data table with sticky header,\ncompact 13px rows, row action buttons, and pagination. Row click\nopens a right-side edit drawer. Light gray background, white cards,\nsingle accent [BRAND]. Empty states with clear next-step text.\nMobile: table becomes stacked cards. Light + dark theme."
+    },
+    {
+      "id": "card-dashboard",
+      "name": "Card KPI Dashboard",
+      "category": "dashboards-pos",
+      "description": "The home screen of a business tool: grid of KPI stat cards on top, charts below, activity feed on the side. Answers 'how is my business today?' at a glance.",
+      "whenToUse": "Owner home screens, daily summary pages, overview tabs (e.g. PasalSakhā today's sales/profit/low stock).",
+      "prompt": "Create a card KPI dashboard home screen (template: card-dashboard).\nGreeting header with date. Top row: 4 KPI stat cards (Sales, Profit,\nOrders, Low stock) — big 32px tabular numbers with small up/down delta\nchips. Below: one main line/bar chart card with day/week/month toggle\nand a plain-language summary sentence under it; right column with\nrecent transactions list and a \"needs attention\" alerts card (low\nstock, unpaid dues). Bottom row of quick-action buttons (New bill,\nAdd stock). White 12px-radius cards, soft shadows, accent [BRAND].\n2 cards per row on mobile. Numbers never wrap (tabular-nums).\nLight + dark theme."
+    },
+    {
+      "id": "pos-terminal",
+      "name": "POS Billing Terminal",
+      "category": "dashboards-pos",
+      "description": "Touch-first checkout screen: big product buttons on the left, running bill on the right, huge Charge/Pay button. Built for speed at the counter, possibly offline.",
+      "whenToUse": "Billing/checkout screens, counter tablets/phones, repeated fast transaction flows. Core screen of PasalSakhā Store.",
+      "prompt": "Create a POS billing terminal screen (template: pos-terminal).\nTouch-first layout: top bar with shop name, cashier, and offline/sync\nstatus pill. Left/main: category chips, product search + barcode bar,\ngrid of large product tiles (icon + name + NPR price, min 64px tall).\nRight panel (bottom sheet on mobile): running bill with item rows and\nlarge +/- quantity steppers, discount field, subtotal, and a very\nlarge grand-total in tabular-nums. Full-width accent PAY button opening\na payment method sheet (Cash, eSewa, Khalti, Credit/udhaar). Success\nscreen with print and WhatsApp receipt options. Works fully offline\nwith sync indicator. Undo-last-action button. High contrast, big\ntouch targets, single accent [BRAND]. Light + dark theme."
+    },
+    {
+      "id": "invoice-document",
+      "name": "Invoice & Document",
+      "category": "dashboards-pos",
+      "description": "The screen looks like the paper document itself — A4-style invoice with header, line items, totals, print-ready layout. Predictable and printable.",
+      "whenToUse": "Invoice/receipt view & print, khata (ledger) statements, reports, purchase orders, any document handed to a customer.",
+      "prompt": "Create an invoice document screen (template: invoice-document).\nTop toolbar with Print, PDF, WhatsApp-send, and Edit actions. Main\narea: centered white A4-proportion paper card on gray background —\nshop logo + details header, invoice number/date, customer block,\nline-item table (item, qty, rate, amount), right-aligned totals block\n(subtotal, discount, VAT, grand total, \"rupees in words\" line),\nPaid/Due status stamp, footer note and signature line. Print stylesheet\nhides all chrome for clean black-on-white output. Exact WYSIWYG between\nscreen and print. Tabular-nums, aligned decimals. Mobile: paper fills\nwidth. Light + dark theme (paper stays white in dark mode)."
+    },
+    {
+      "id": "analytics-dark",
+      "name": "Dark Analytics Cockpit",
+      "category": "dashboards-pos",
+      "description": "Dark, screen-filling analytics with glowing charts — the mission-control look. Powerful feel for monitoring and deep analysis.",
+      "whenToUse": "Analytics/reports power-user screens, monitoring views, trend exploration. Use sparingly — tires non-expert users.",
+      "prompt": "Create a dark analytics cockpit screen (template: analytics-dark).\nNear-black background (#0B0F17), panel cards (#111827) with 1px\nlow-opacity borders. Top filter bar: date range, compare-to-prior\nperiod toggle, metric selector. KPI strip with monospace tabular\nnumbers, large multi-series line chart with subtle glow in cyan/\n[BRAND], breakdown table with inline sparkbar mini-charts in cells,\nexport CSV/PNG button. Every chart has an equivalent data table view.\nUppercase 13px panel titles. No harsh white text, no rainbow palettes.\nMobile: panels stack. Dark theme primary, light theme also supported."
+    },
+    {
+      "id": "list-app",
+      "name": "List & Detail App",
+      "category": "mobile-apps",
+      "description": "Simplest reliable app structure: searchable list of things, tap to open detail/form, back returns to same scroll position. Two screens, done.",
+      "whenToUse": "Customer lists, product lists, transaction history, task lists — the workhorse pattern for business CRUD utilities.",
+      "prompt": "Create a mobile list-and-detail app screen (template: list-app).\nPinned header with title, large search bar, and filter chips\n(All/Active/Due). Full-width scrollable list rows: left icon,\ntitle, one-line subtitle, right value + chevron, 60px tall.\nFloating accent \"+\" FAB. Tap row opens detail screen with\nview/edit toggle; back restores scroll position, search and filters.\nInstant local search filtering. Empty state with clear next-step\ntext. Delete via swipe with undo snackbar (no confirm-only dialogs).\nInfinite scroll. Nepali/English strings, 44px+ touch targets,\nmobile-first, light + dark theme."
+    },
+    {
+      "id": "bottom-tab",
+      "name": "Bottom Tab App",
+      "category": "mobile-apps",
+      "description": "Standard consumer app frame: 3-5 bottom navigation tabs, each an independent stack, content area between header and tabs. Instantly understood.",
+      "whenToUse": "Apps with 3-5 distinct jobs (e.g. PasalSakhā mobile: Home / Bill / Stock / Khata / More).",
+      "prompt": "Create a mobile bottom-tab app frame (template: bottom-tab).\nBottom navigation bar (56px + safe area) with 4-5 icon+label tabs:\nHome, Bill, Stock, Ledger, More — active tab in accent [BRAND],\nattention badges where relevant. Each tab is an independent stack\nwith its own header and preserved scroll/filter state. Content area\nuses cards and grouped lists. Accent FAB above tab bar on the right\nfor the primary create action. Detail screens push over with back\nbutton. Nepali/English labels (short Devanagari words), 44px+\ntouch targets, works on 360px screens, light + dark theme."
+    },
+    {
+      "id": "onboarding-flow",
+      "name": "Onboarding & Setup Wizard",
+      "category": "mobile-apps",
+      "description": "Guided multi-step flow collecting required information in small chunks, with visible progress and the ability to skip or go back.",
+      "whenToUse": "First-run app setup (shop name, address, categories), multi-step forms, feature tours.",
+      "prompt": "Create a mobile onboarding wizard (template: onboarding-flow).\nTop progress header: back arrow, step counter (\"3 / 5\") or thin\nprogress bar, optional Skip link. One focused step per screen with\nlarge readable question text and big radio-style option cards or\nlarge inputs (max 3 fields per step). Sticky bottom \"Continue\"\nbutton in accent [BRAND]. Inline validation while typing. Back\npreserves all entered data. Final review screen summarizes answers\nbefore submit, then a clear success screen. Nepali/English strings,\n44px+ touch targets, works on 360px screens, light + dark theme."
+    },
+    {
+      "id": "wallet-pay",
+      "name": "Wallet & Payments",
+      "category": "mobile-apps",
+      "description": "Money-first interface: prominent balance card, quick action buttons, transaction history grouped by day. Every number precise and calm.",
+      "whenToUse": "Wallet features, payment histories, credit/udhaar tracking, any screen where users watch money move.",
+      "prompt": "Create a mobile wallet/payments screen (template: wallet-pay).\nHero balance card with brand gradient, large tabular-nums amount with\ncurrency (रु), hide/show eye toggle, \"as of\" timestamp. Below: row of\n3-4 circular quick-action buttons (Send, Receive/QR, Top-up, Track\ncredit). Pending-requests attention strip, then day-grouped transaction\nhistory rows: icon, name, time, signed amount (green in / red out,\nwith +/− signs, never color alone). Tap opens a detail bottom sheet\nwith status timeline (created → sent → completed) and share-receipt\naction. Precise amounts, no rounding, fees shown before confirmation.\nNepali/English, 44px+ targets, light + dark theme."
+    },
+    {
+      "id": "ai-chat",
+      "name": "AI Chat Interface",
+      "category": "ai-chat-interfaces",
+      "description": "Conversation screen: message thread with clear user/AI distinction, persistent composer, streaming responses, suggested follow-up prompts. Default frame for any LLM feature.",
+      "whenToUse": "Any 'ask the AI' feature — business Q&A in Nepali, support bots, writing assistants.",
+      "prompt": "Create an AI chat interface (template: ai-chat). Thread header with\ntopic title, status, and clear-chat action. Message stream: user\nmessages as accent-tinted right-aligned bubbles, AI responses as\nplain left-aligned markdown text (16px, 1.6 line-height). Streaming\nresponses with animated dots and a working Stop button. Suggested\nprompt chips under the first AI message written as real user\nquestions in Nepali. Growing composer at bottom with send button.\nCopy and feedback (thumbs) actions on AI messages. Numbers in AI\nanswers include the time period they refer to. Thread persists\nacross refresh. Nepali/English, mobile-first, light + dark theme."
+    },
+    {
+      "id": "prompt-workbench",
+      "name": "AI Workbench (Split-pane)",
+      "category": "ai-chat-interfaces",
+      "description": "Power-user split layout: inputs/parameters on the left, live preview or output on the right. For tune-and-regenerate loops.",
+      "whenToUse": "Image/design generation, report generation with parameters, bulk operations with preview.",
+      "prompt": "Create an AI prompt workbench (template: prompt-workbench).\nDesktop: left 40% panel with grouped parameter form — labels above\ninputs, sensible visible defaults, collapsed \"advanced\" section,\ndice/randomize action. Sticky Generate button showing progress.\nRight 60% panel: output preview on neutral background with slim\ntoolbar (regenerate, version tabs v1/v2/v3 for comparing attempts,\nexport). Below preview: history list of past runs with timestamp\nand parameter summary. Regeneration never clears previous outputs;\nerrors keep the old output visible. Mobile: Inputs/Preview tabs with\nsticky generate. Nepali/English, light + dark theme."
+    },
+    {
+      "id": "settings-control",
+      "name": "Settings & Control Panel",
+      "category": "ai-chat-interfaces",
+      "description": "Organized settings screen: searchable, sectioned, on/off states immediately visible. Predictable and calm — settings never surprise.",
+      "whenToUse": "App settings, business configuration (shop info, tax/VAT, receipt format, users & permissions), feature toggles.",
+      "prompt": "Create a settings control panel (template: settings-control).\nPinned search field at top filtering sections live (matches Nepali\nand English terms). Grouped sections as white card lists with small\nuppercase section titles: Shop info, Billing (currency, VAT, receipt\ntemplate), Notifications (per-type toggles), Users & roles,\nLanguage & theme, Data (export, backup, sync status). Each row:\nlabel + one-line plain-language description on left, control\n(toggle / value with chevron / radio) on right. Immediate save with\nsubtle \"saved\" toast, no global save button. Final red \"Danger zone\"\nsection with separated, confirmed destructive actions. Mobile-first\nlist layout, light + dark theme."
+    }
+  ]
+}
