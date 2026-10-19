@@ -44,6 +44,8 @@ npm.cmd run build:ui                     # build library → packages/ui/dist/
 
 ### Documentation site (`site/`)
 
+**Live: <https://ui.sakhalabs.com>**
+
 The docs in `docs/` are also published as a real site using **Astro + Starlight**: a splash
 landing page, live React demos of the real components, a theme/accent playground, full-text
 search, sidebar navigation and dark mode (NE/EN language switching is on the Starlight roadmap).
@@ -56,8 +58,9 @@ npm.cmd run build:site    # static build → site/dist/
 ```
 
 > The site consumes the library through `file:../packages/ui`, so run `npm.cmd run build:ui`
-> first if `packages/ui/dist/` is missing. Set the real deployment URL in
-> `site/astro.config.mjs` (`site:`) before going live — it feeds canonical URLs and the sitemap.
+> first if `packages/ui/dist/` is missing. The canonical URL (`site:` in `site/astro.config.mjs`)
+> is set to `https://ui.sakhalabs.com` — it feeds the canonical tags and the sitemap; update it if
+> the host ever changes.
 
 **Using it in your other projects** (PasalSakhā, SakhaLabs site, …) — full guide with all
 install options and troubleshooting: **[docs/getting-started.md](docs/getting-started.md)**

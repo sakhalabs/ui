@@ -13,9 +13,9 @@ Nepali/bilingual UX rules — so designs stay consistent and you stop re-buildin
 | [publishing.md](./publishing.md) | You're cutting a release — npm setup, versioning and the publish runbook |
 | [chats/](./chats/README.md) | You want the records of past chats — decisions and the reasoning behind them |
 
-> These Markdown docs are also published as a site (with live demos, search and dark mode) from
-> **[`site/`](../site)** — run `npm.cmd run dev:site` from the repo root and open
-> <http://localhost:4321>.
+> These Markdown docs are also published as a site — **<https://ui.sakhalabs.com>** — with live
+> demos, search and dark mode. To run it locally: `npm.cmd run dev:site` from the repo root, then
+> open <http://localhost:4321>.
 
 ## 30-second preview
 
