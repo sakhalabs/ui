@@ -28,6 +28,7 @@ Docs-site and packaging polish — no changes to the library or its runtime.
 - **`docs/publishing.md`** now documents the **staged publishing** flow (`npm stage publish` →
   `npm stage approve`) alongside a direct `npm publish`, and explains the `0.0.0-stage` placeholder
   that a brand-new package gets.
+- The docs site's canonical URL is set to **`https://ui.sakhalabs.com`** (canonical tags + sitemap).
 
 ## [1.1.0] — 2026-10-20
 

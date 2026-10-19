@@ -5,8 +5,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: set the real deployment URL before going live (used for canonical URLs + sitemap).
-  site: 'https://sakhalabs.example.com',
+  // Canonical URL for the deployed docs site (drives canonical tags + sitemap).
+  site: 'https://ui.sakhalabs.com',
 
   integrations: [
     starlight({
