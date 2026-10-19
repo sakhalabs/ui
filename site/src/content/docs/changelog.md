@@ -9,10 +9,10 @@ Notable changes to **`@sakhalabs/ui`** — the Sakhā Labs component library at 
 - Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - The version here matches `packages/ui/package.json`.
 
-## [Unreleased]
+## [1.1.0] — 2026-10-20
 
-Accessibility & polish pass over the existing components — no new components, still zero runtime
-dependencies, still Tailwind-v4 friendly.
+**First public npm release.** Accessibility & polish pass over the 1.0.0 components — no new
+components, still zero runtime dependencies, still Tailwind-v4 friendly.
 
 ### Added
 
@@ -26,6 +26,10 @@ dependencies, still Tailwind-v4 friendly.
   `repository` / `homepage` / `bugs` (still placeholders until the real repo URL is filled in).
 - **Pre-publish guard** — `npm run preflight` (also runs automatically via `prepublishOnly`) refuses to
   publish while placeholder URLs remain, the build is missing, or `README` / `LICENSE` are absent.
+- **Documentation site** — a self-contained **Astro + Starlight** project in `site/`: splash landing
+  page, live React demos of the real components, a theme/accent playground, full-text search, sidebar
+  navigation and dark mode. Builds to static HTML (`npm run build:site` → `site/dist/`) and consumes
+  the library via `file:../packages/ui`, so it always demos the actual package.
 
 ### Changed
 

@@ -20,7 +20,7 @@ Later, when generating UI with AI tools, you paste the template prompt + the pro
 ## @sakhalabs/ui — the reusable component library
 
 The library lives in **`packages/ui/`** as a standalone npm workspace package
-(`@sakhalabs/ui` v1.0.0) — install it in any of your projects for consistent design.
+(`@sakhalabs/ui` v1.1.0) — install it in any of your projects for consistent design.
 The showcase app at the repo root is just one of its consumers.
 
 ```bash
@@ -57,7 +57,7 @@ npm.cmd run build:ui
 # 2. in the other project, add a file: dependency (any of these forms)
 npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
 # …or pack a versioned tarball you can commit/archive:
-npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.0.0.tgz
+npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.1.0.tgz
 ```
 
 ```tsx

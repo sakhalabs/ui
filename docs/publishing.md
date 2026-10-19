@@ -70,9 +70,9 @@ npm i @sakhalabs/ui
   git push --tags
   ```
 
-> **Note on the first release:** `@sakhalabs/ui` has never been published, so `v1.0.0` is still
-> free to use for the current code. Either fold the `[Unreleased]` changelog section into
-> `[1.0.0]`, or bump to `1.1.0` — decide before the first `npm publish`.
+> **The first public release is `1.1.0`.** `@sakhalabs/ui` had never been published; the changelog's
+> `[1.0.0]` entry and its local `v1.0.0` tag describe the pre-release state, so the first npm release
+> from this repo is `1.1.0`. Subsequent releases follow normal semver from there.
 
 ## If something goes wrong
 

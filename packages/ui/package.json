@@ -1,6 +1,6 @@
 {
   "name": "@sakhalabs/ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sakhā Labs React UI component library — CSS-variable themed, bilingual (NE/EN) ready, mobile-first, WCAG AA, zero runtime deps beyond React.",
   "keywords": [
     "react",

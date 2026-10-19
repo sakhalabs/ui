@@ -59,10 +59,10 @@ Better when you want something you can commit, archive, or copy to another machi
 
 ```bash
 # in UIUXSakha:
-npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.0.0.tgz
+npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.1.0.tgz
 
 # in the consuming project:
-npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.0.0.tgz"
+npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.1.0.tgz"
 ```
 
 This **copies** `dist/` into `node_modules` — stable until you re-pack and reinstall to update.
@@ -192,7 +192,7 @@ npm.cmd run build:ui
 - **Option B (tarball)** → re-pack and reinstall:
   ```bash
   npm.cmd pack --workspace @sakhalabs/ui
-  npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.0.0.tgz" --force
+  npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.1.0.tgz" --force
   ```
 
 While iterating on components, the fastest loop is running the **showcase** next to your app —

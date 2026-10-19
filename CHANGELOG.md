@@ -6,10 +6,10 @@ Notable changes to **`@sakhalabs/ui`** — the Sakhā Labs component library at 
 - Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - The version here matches `packages/ui/package.json`.
 
-## [Unreleased]
+## [1.1.0] — 2026-10-20
 
-Accessibility & polish pass over the existing components — no new components, still zero runtime
-dependencies, still Tailwind-v4 friendly.
+**First public npm release.** Accessibility & polish pass over the 1.0.0 components — no new
+components, still zero runtime dependencies, still Tailwind-v4 friendly.
 
 ### Added
 
