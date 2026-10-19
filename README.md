@@ -10,7 +10,12 @@ Later, when generating UI with AI tools, you paste the template prompt + the pro
 > [tailwind](docs/tailwind.md) (Tailwind CSS v4 setup),
 > [theming](docs/theming.md) (themes, accents, dark mode),
 > [components](docs/components.md) (full props reference),
+> [publishing](docs/publishing.md) (release runbook),
 > [changelog](CHANGELOG.md) (release history & versioning).
+
+> 🌐 **Prefer a proper site?** The same docs are published with Astro Starlight in **`site/`** —
+> live React demos, full-text search, sidebar nav and dark mode. See
+> [Documentation site](#documentation-site-site) below.
 
 ## @sakhalabs/ui — the reusable component library
 
@@ -24,6 +29,23 @@ npm.cmd run dev                          # showcase: http://localhost:5181
 npm.cmd run build                        # typecheck + build showcase
 npm.cmd run build:ui                     # build library → packages/ui/dist/
 ```
+
+### Documentation site (`site/`)
+
+The docs in `docs/` are also published as a real site using **Astro + Starlight**: a splash
+landing page, live React demos of the real components, a theme/accent playground, full-text
+search, sidebar navigation and dark mode (NE/EN language switching is on the Starlight roadmap).
+It is a self-contained project with its own dependencies and builds to **static HTML**, so it can
+be hosted anywhere (Netlify, Cloudflare Pages, GitHub Pages, S3, or a plain web server).
+
+```bash
+npm.cmd run dev:site      # docs dev server → http://localhost:4321
+npm.cmd run build:site    # static build → site/dist/
+```
+
+> The site consumes the library through `file:../packages/ui`, so run `npm.cmd run build:ui`
+> first if `packages/ui/dist/` is missing. Set the real deployment URL in
+> `site/astro.config.mjs` (`site:`) before going live — it feeds canonical URLs and the sitemap.
 
 **Using it in your other projects** (PasalSakhā, SakhaLabs site, …) — full guide with all
 install options and troubleshooting: **[docs/getting-started.md](docs/getting-started.md)**

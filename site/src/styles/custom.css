@@ -1,0 +1,58 @@
+/*
+ * Sakha UI docs — global styles.
+ *
+ * The component library ships one stylesheet. We import it here so every live
+ * demo on the site renders exactly like the real package would.
+ *
+ * The library's rules live inside `@layer components`, so they never fight the
+ * Starlight chrome: Starlight's own (unlayered) styles always win where the two
+ * overlap, while the library's component classes apply untouched.
+ */
+@import '@sakhalabs/ui/styles.css';
+
+/* --- live demo framing ------------------------------------------------- */
+
+.demo-surface {
+  margin: 1.25rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.75rem;
+  background: var(--sl-color-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.demo-surface > * {
+  margin: 0;
+}
+
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+/* Keep library typography from leaking into docs prose. */
+.demo-surface p,
+.demo-surface h1,
+.demo-surface h2,
+.demo-surface h3 {
+  margin: 0;
+}
+
+/* Featured splash card on the landing page. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}

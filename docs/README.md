@@ -10,7 +10,12 @@ Nepali/bilingual UX rules — so designs stay consistent and you stop re-buildin
 | [tailwind.md](./tailwind.md) | Your project uses **Tailwind CSS v4** — import order, layer model, `@theme inline` token bridge, `dark:` variant |
 | [theming.md](./theming.md) | You want to switch themes/accents, add a dark mode, or understand the CSS variables |
 | [components.md](./components.md) | You need the full list of components with props and copy-paste examples |
+| [publishing.md](./publishing.md) | You're cutting a release — npm setup, versioning and the publish runbook |
 | [chats/](./chats/README.md) | You want the records of past chats — decisions and the reasoning behind them |
+
+> These Markdown docs are also published as a site (with live demos, search and dark mode) from
+> **[`site/`](../site)** — run `npm.cmd run dev:site` from the repo root and open
+> <http://localhost:4321>.
 
 ## 30-second preview
 
@@ -44,6 +49,7 @@ UIUXSakha/
 │   ├── dist/               ← built output: index.js, index.d.ts, ui.css
 │   └── package.json        ← exports map, scripts
 ├── src/                    ← showcase app (a consumer of the library)
+├── site/                   ← docs & marketing site (Astro Starlight; self-contained)
 ├── docs/                   ← these docs
 ├── templates.json          ← 18 AI-ready UI template prompts (separate deliverable)
 └── README.md               ← catalog + project overview
@@ -56,4 +62,6 @@ npm.cmd install        # workspace install
 npm.cmd run dev        # showcase at http://localhost:5181
 npm.cmd run build:ui   # build the library → packages/ui/dist/
 npm.cmd run build      # typecheck + build the showcase
+npm.cmd run dev:site   # docs site at http://localhost:4321
+npm.cmd run build:site # static docs site → site/dist/
 ```

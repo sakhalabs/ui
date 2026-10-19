@@ -23,6 +23,10 @@ dependencies, still Tailwind-v4 friendly.
   `repository` / `homepage` / `bugs` (still placeholders until the real repo URL is filled in).
 - **Pre-publish guard** — `npm run preflight` (also runs automatically via `prepublishOnly`) refuses to
   publish while placeholder URLs remain, the build is missing, or `README` / `LICENSE` are absent.
+- **Documentation site** — a self-contained **Astro + Starlight** project in `site/`: splash landing
+  page, live React demos of the real components, a theme/accent playground, full-text search, sidebar
+  navigation and dark mode. Builds to static HTML (`npm run build:site` → `site/dist/`) and consumes
+  the library via `file:../packages/ui`, so it always demos the actual package.
 
 ### Changed
 

@@ -1,0 +1,77 @@
+---
+title: Overview
+description: The Sakhā Labs React component library — five themes, eight accents, light and dark, bilingual (Nepali/English) ready, mobile-first and WCAG AA.
+template: splash
+hero:
+  title: Sakha UI
+  tagline: One install gives every Sakhā Labs product the same look — five themes, eight accents, light and dark, bilingual and mobile-first.
+  actions:
+    - text: Get started
+      link: /getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Component reference
+      link: /components/
+      icon: document
+      variant: minimal
+    - text: npm
+      link: https://www.npmjs.com/package/@sakhalabs/ui
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import { ComponentStrip, ThemePlayground } from '../../components/demos.tsx';
+
+## A live look
+
+The same components the library ships, rendered here with the real package. Toggle your site theme
+to see them adapt to light and dark.
+
+<ComponentStrip client:load />
+
+## Pick a theme, pick an accent
+
+The whole library is styled through CSS variables, so one call restyles everything. Try the five
+themes and eight accents:
+
+<ThemePlayground client:load />
+
+## Why Sakhā Labs uses it
+
+<CardGrid>
+  <Card title="Themed by variables" icon="pencil">
+    Every colour, radius and shadow is a CSS custom property. Themes are data, not a rewrite.
+  </Card>
+  <Card title="Accessible by default" icon="approve-check">
+    Focus rings, roving tabindex, focus trapping, `aria-invalid`, `role="alert"` — measured AA
+    contrast, worst pair 4.83:1.
+  </Card>
+  <Card title="Bilingual (NE / EN)" icon="document">
+    Ships with *Noto Sans Devanagari* in the font stack; numerals use `tabular-nums` for NPR amounts.
+  </Card>
+  <Card title="Touch-first" icon="laptop">
+    `md` controls are 44 px, tuned for 360 px-wide phones and low-bandwidth networks.
+  </Card>
+  <Card title="Tailwind v4 friendly" icon="rocket">
+    Ships inside `@layer components`, so your utilities always win where they overlap.
+  </Card>
+  <Card title="Zero runtime deps" icon="star">
+    React is the only peer dependency — plain CSS and CSS variables underneath.
+  </Card>
+</CardGrid>
+
+## Install
+
+```bash
+npm install @sakhalabs/ui
+```
+
+```tsx
+import { applyTheme, Button } from '@sakhalabs/ui'
+import '@sakhalabs/ui/styles.css'
+
+applyTheme('clean', '#4F46E5')
+```
+
+Ready to wire it into a project? Start with **[Getting started](/getting-started/)**.

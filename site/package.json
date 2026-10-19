@@ -1,0 +1,25 @@
+{
+  "name": "@sakhalabs/site",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Documentation & marketing site for Sakha UI (@sakhalabs/ui).",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^7.1.0",
+    "@astrojs/starlight": "^0.42.6",
+    "@sakhalabs/ui": "file:../packages/ui",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "astro": "^7.2.10",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sharp": "^0.35.3"
+  }
+}
