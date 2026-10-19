@@ -77,7 +77,7 @@ export function OverlaysSection() {
 
       <Example
         title="Tabs"
-        description="Filter/section switching without leaving the page. Arrow keys move between tabs."
+        description="Filter/section switching without leaving the page. Arrow keys move between tabs; Home/End jump to the ends."
         code={`const [tab, setTab] = useState('all')
 
 <Tabs
@@ -88,9 +88,10 @@ export function OverlaysSection() {
   ]}
   value={tab}
   onChange={setTab}
+  id="bills-tabs"
 />
-<TabPanel value="all" active={tab}>…all bills…</TabPanel>
-<TabPanel value="due" active={tab}>…only dues…</TabPanel>`}
+<TabPanel id="bills-tabs" value="all" active={tab}>…all bills…</TabPanel>
+<TabPanel id="bills-tabs" value="due" active={tab}>…only dues…</TabPanel>`}
       >
         <div style={{ width: '100%' }}>
           <Tabs
@@ -101,14 +102,15 @@ export function OverlaysSection() {
             ]}
             value={tab}
             onChange={setTab}
+            id="bills-tabs"
           />
-          <TabPanel value="all" active={tab}>
+          <TabPanel id="bills-tabs" value="all" active={tab}>
             <span className="muted-text">24 bills — showing every transaction.</span>
           </TabPanel>
-          <TabPanel value="due" active={tab}>
+          <TabPanel id="bills-tabs" value="due" active={tab}>
             <span className="muted-text">3 bills with unpaid dues — remind via WhatsApp.</span>
           </TabPanel>
-          <TabPanel value="paid" active={tab}>
+          <TabPanel id="bills-tabs" value="paid" active={tab}>
             <span className="muted-text">21 bills fully paid.</span>
           </TabPanel>
         </div>
@@ -198,7 +200,9 @@ const { push } = useToast()
           ['Modal — footer', 'ReactNode', '—'],
           ['Tabs — items', '{ value, label, badge? }[]', 'required'],
           ['Tabs — value / onChange', 'string / (v) => void', 'required'],
+          ['Tabs — id', 'string', '— (links each tab to its panel)'],
           ['TabPanel — value / active', 'string', 'required'],
+          ['TabPanel — id', 'string', '— (same id as Tabs)'],
           ['ToastProvider — max', 'number', '4'],
           ['useToast() — push', '({ tone?, title, body?, duration? })', 'returns id'],
           ['Spinner — size', "'sm' | 'md' | 'lg'", "'md'"],

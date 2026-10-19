@@ -159,11 +159,16 @@ export function SelectionSection() {
   title="पसलको लोगो / Shop logo"
   hint="PNG or JPG, up to 2 MB"
   onFile={(file) => upload(file)}
-/>`}
+/>
+
+<FileDrop disabled title="Uploads locked" hint="Verify your account to upload" />`}
       >
         <div className="col">
           <div style={{ maxWidth: 360, width: '100%' }}>
             <FileDrop accept="image/png,image/jpeg" title="पसलको लोगो / Shop logo" hint="PNG or JPG, up to 2 MB" />
+          </div>
+          <div style={{ maxWidth: 360, width: '100%' }}>
+            <FileDrop disabled title="Uploads locked" hint="Verify your account to upload" />
           </div>
         </div>
       </Example>
@@ -172,12 +177,16 @@ export function SelectionSection() {
         rows={[
           ['Select — options', '{ value, label }[]', 'required'],
           ['Select — placeholder', 'string', '—'],
+          ['Select — error', 'boolean', 'false'],
           ['Checkbox / Radio — label', 'string', 'required'],
           ['Checkbox / Radio — description', 'string', '—'],
           ['RadioGroup — direction', "'column' | 'row'", "'column'"],
           ['Switch — checked / onChange', 'boolean / (v) => void', 'required'],
+          ['Switch — disabled', 'boolean', 'false'],
           ['Slider — min / max / step', 'number', '0 / 100 / 1'],
           ['FileDrop — onFile', '(file: File) => void', '—'],
+          ['FileDrop — title / hint / accept', 'string', '—'],
+          ['FileDrop — disabled', 'boolean', 'false'],
         ]}
       />
     </section>

@@ -8,11 +8,17 @@ export interface SelectOption {
 export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: SelectOption[]
   placeholder?: string
+  /** Red border + `aria-invalid`, matching Input and Textarea. */
+  error?: boolean
 }
 
-export function Select({ options, placeholder, className = '', ...rest }: SelectProps) {
+export function Select({ options, placeholder, error = false, className = '', ...rest }: SelectProps) {
   return (
-    <select className={'select' + (className ? ` ${className}` : '')} {...rest}>
+    <select
+      className={'select' + (error ? ' input--error' : '') + (className ? ` ${className}` : '')}
+      aria-invalid={error || undefined}
+      {...rest}
+    >
       {placeholder && (
         <option value="" disabled>
           {placeholder}

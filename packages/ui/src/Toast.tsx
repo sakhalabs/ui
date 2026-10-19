@@ -52,7 +52,7 @@ export function ToastProvider({ children, max = 4 }: ToastProviderProps) {
               <p className="toast-title">{t.title}</p>
               {t.body && <p className="toast-body">{t.body}</p>}
             </div>
-            <button className="alert-close" onClick={() => dismiss(t.id)} aria-label="Close">
+            <button type="button" className="alert-close" onClick={() => dismiss(t.id)} aria-label="Close">
               ✕
             </button>
           </div>

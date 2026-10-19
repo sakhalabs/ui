@@ -15,7 +15,9 @@ export function Field({ label, hint, error, children }: FieldProps) {
       <span className="field-label">{label}</span>
       {children}
       {error ? (
-        <span className="field-error">{error}</span>
+        <span className="field-error" role="alert">
+          {error}
+        </span>
       ) : hint ? (
         <span className="field-hint">{hint}</span>
       ) : null}
@@ -34,7 +36,7 @@ export function Input({ size = 'md', error = false, className = '', type = 'text
     (size !== 'md' ? ` input--${size}` : '') +
     (error ? ' input--error' : '') +
     (className ? ` ${className}` : '')
-  return <input type={type} className={cls} {...rest} />
+  return <input type={type} className={cls} aria-invalid={error || undefined} {...rest} />
 }
 
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -43,7 +45,7 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
 
 export function Textarea({ error = false, className = '', rows = 4, ...rest }: TextareaProps) {
   const cls = 'textarea' + (error ? ' input--error' : '') + (className ? ` ${className}` : '')
-  return <textarea rows={rows} className={cls} {...rest} />
+  return <textarea rows={rows} className={cls} aria-invalid={error || undefined} {...rest} />
 }
 
 export interface InputGroupProps extends InputProps {

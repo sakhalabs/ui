@@ -80,11 +80,13 @@ export default function App() {
             <span className="muted-text">{theme.description}</span>
             <span className="topbar-spacer" />
             <span className="control-label">Theme</span>
-            <div className="seg" role="tablist" aria-label="Theme">
+            <div className="seg" role="group" aria-label="Theme">
               {THEMES.map((t) => (
                 <button
                   key={t.id}
+                  type="button"
                   className={t.id === theme.id ? 'active' : ''}
+                  aria-pressed={t.id === theme.id}
                   onClick={() => setThemeId(t.id)}
                 >
                   {t.name}
@@ -96,10 +98,12 @@ export default function App() {
               {ACCENTS.map((a) => (
                 <button
                   key={a.id}
+                  type="button"
                   className={'swatch' + (a.color === accent ? ' active' : '')}
                   style={{ background: a.color }}
                   title={a.name}
                   aria-label={`Accent: ${a.name}`}
+                  aria-pressed={a.color === accent}
                   onClick={() => setAccent(a.color)}
                 />
               ))}

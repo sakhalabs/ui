@@ -41,7 +41,7 @@ All native HTML attributes are forwarded (e.g. `Input` accepts `placeholder`, `n
 |---|---|---|
 | `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost' \| 'danger'` | `'primary'` |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
-| `loading` | `boolean` — shows spinner, disables the button | `false` |
+| `loading` | `boolean` — shows spinner, disables the button, sets `aria-busy="true"` | `false` |
 | `fullWidth` | `boolean` | `false` |
 | …rest | native `<button>` props | `type` defaults to `'button'` (won't accidentally submit forms) |
 
@@ -116,10 +116,12 @@ const [qty, setQty] = useState(1)
 | `min` / `max` / `step` | `number` | `0` / `9999` / `1` |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
 | `disabled` | `boolean` | `false` |
+| `error` | `boolean` — red border + `aria-invalid` | `false` |
 | `aria-label` / `id` | `string` | recommended for a11y/labels |
 
 - Values are always **clamped** to `[min, max]`.
 - Steppers disable at the bounds; empty input resets to `min`.
+- Steppers are 44 × 44 px at `md` (36 at `sm`, 52 at `lg`) — touch-safe for POS.
 - Styling contract: `−` and `+` are attached **outside** the box, the input has square corners
   and only the outer corners of the stepper buttons are rounded — borders line up exactly.
 
@@ -137,6 +139,7 @@ const [qty, setQty] = useState(1)
 |---|---|
 | `options` | `{ value, label }[]` (required) |
 | `placeholder` | `string` — rendered as a disabled empty option |
+| `error` | `boolean` — red border + `aria-invalid` |
 | …rest | native `<select>` props |
 
 ### FileDrop
@@ -151,8 +154,11 @@ const [qty, setQty] = useState(1)
 | `accept` | `string` | — (native accept) |
 | `title` | `string` | `'Choose a file or drop it here'` |
 | `hint` | `string` | `'PNG or JPG, up to 2 MB'` |
+| `disabled` | `boolean` — blocks picking and dropping | `false` |
 
-Drag & drop **and** click-to-pick; shows the chosen file name.
+Drag & drop **and** click-to-pick; shows the chosen file name. The hidden
+`<input type="file">` is visually hidden rather than `display:none`, so the zone stays
+reachable by keyboard and screen readers (and shows a focus ring when focused).
 
 ---
 
@@ -315,8 +321,9 @@ const [tab, setTab] = useState('all')
 ```
 
 - `items`: `{ value, label, badge? }[]` — `badge` renders as a count pill.
-- Proper `role="tablist"` / `role="tab"` + `aria-selected`; **arrow keys** move between tabs.
-- `TabPanel` renders only when `value === active` — keep them siblings of `Tabs`.
+- `id`: optional `string` — derives stable ids so each tab gets `aria-controls` and each panel `aria-labelledby` (recommended when more than one tab set is on the page).
+- Proper `role="tablist"` / `role="tab"` + `aria-selected`, with a **roving `tabindex`**: only the active tab sits in the tab order, and **arrow keys plus Home/End** move between them.
+- `TabPanel` renders only when `value === active` — keep them siblings of `Tabs`. It is focusable (`tabIndex={0}`) so keyboard users can scroll the panel.
 
 ### Modal
 
@@ -338,7 +345,8 @@ const [tab, setTab] = useState('all')
 ```
 
 - **Escape** closes it, backdrop click closes it, body scroll locks (and restores) while open.
-- `role="dialog"` + `aria-modal="true"`.
+- `role="dialog"` + `aria-modal="true"`, labelled by the title via `aria-labelledby`.
+- **Focus is trapped** while open (Tab / Shift+Tab cycle inside) and **restored** to the opening element on close. The first focusable control is focused automatically — mark a different one with `data-autofocus` to override.
 - Controlled only — you own the `open` state (no `useDisclosure` needed):
 
 ```tsx
@@ -360,3 +368,9 @@ const [open, setOpen] = useState(false)
 9. **Tailwind v4 projects** — import `tailwindcss` *before* `@sakhaui/ui/styles.css`
    (the library ships in `@layer components` so utilities override it — see
    [tailwind.md](./tailwind.md)).
+10. **Touch targets** — `md` controls are 44 px tall (the mobile minimum): buttons, inputs,
+    selects, tabs, pagination, check/switch rows and sliders. `sm` is 36, `lg` is 52.
+    Icon-only buttons keep a 44 px hit area via a padded `::after`.
+11. **`applyTheme()` writes inline styles** onto `:root`, so it wins over the CSS `[data-theme]`
+    blocks. Pick one theming path — call `applyTheme()` (JS) *or* set `data-theme` yourself
+    (pure CSS) — rather than mixing them.

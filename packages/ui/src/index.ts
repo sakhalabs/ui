@@ -57,5 +57,15 @@ export { Modal } from './Modal'
 export type { ModalProps } from './Modal'
 
 /* Theming */
-export { THEMES, ACCENTS, applyTheme, getTheme, getAccent } from './tokens'
+export {
+  THEMES,
+  ACCENTS,
+  applyTheme,
+  getTheme,
+  getAccent,
+  contrastText,
+  contrastRatio,
+  mix,
+  luminance,
+} from './tokens'
 export type { Theme } from './tokens'

@@ -124,9 +124,72 @@ export function getAccent(color: string) {
   return ACCENTS.find((a) => a.color === color || a.id === color) ?? ACCENTS[0]
 }
 
+/* ------------------------------------------------------------------
+   Colour maths — keeps derived colours (accent foreground, hover shade,
+   tone "ink") readable no matter which accent a product picks.
+   ------------------------------------------------------------------ */
+
+const HEX = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i
+
+function toRgb(hex: string): [number, number, number] {
+  const h = hex.trim().replace('#', '')
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  return [0, 2, 4].map((i) => {
+    const v = parseInt(full.slice(i, i + 2), 16)
+    return Number.isFinite(v) ? v : 0
+  }) as [number, number, number]
+}
+
+function toHex(rgb: number[]): string {
+  return (
+    '#' +
+    rgb.map((v) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('')
+  )
+}
+
+function channelLuminance(value: number): number {
+  const c = value / 255
+  return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
+}
+
+/** WCAG relative luminance of a hex colour. */
+export function luminance(hex: string): number {
+  const [r, g, b] = toRgb(hex)
+  return 0.2126 * channelLuminance(r) + 0.7152 * channelLuminance(g) + 0.0722 * channelLuminance(b)
+}
+
+/** WCAG contrast ratio between two hex colours (1–21). */
+export function contrastRatio(a: string, b: string): number {
+  const la = luminance(a)
+  const lb = luminance(b)
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05)
+}
+
+/** Blend two hex colours — `t` is the weight of `a` (0–1). */
+export function mix(a: string, b: string, t: number): string {
+  const [ra, ga, ba] = toRgb(a)
+  const [rb, gb, bb] = toRgb(b)
+  return toHex([ra * t + rb * (1 - t), ga * t + gb * (1 - t), ba * t + bb * (1 - t)])
+}
+
+/**
+ * Readable foreground for a solid background: white unless near-black is
+ * measurably better (teal, amber and orange need dark text — white fails AA).
+ */
+export function contrastText(background: string): string {
+  if (!HEX.test(background.trim())) return '#ffffff'
+  return contrastRatio('#ffffff', background) >= contrastRatio('#0b0f17', background)
+    ? '#ffffff'
+    : '#0b0f17'
+}
+
 /**
  * Apply a theme + accent to <html>. Call once at app root.
  * All components read these CSS variables, so everything restyles.
+ *
+ * Also derives `--accent-contrast` (readable text on the accent) and
+ * `--accent-strong` (hover shade in the safe direction), so a product can pick
+ * Mustang Amber or Teal Mist without the system producing unreadable buttons.
  */
 export function applyTheme(theme: string | Theme, accent?: string): Theme {
   const t = typeof theme === 'string' ? getTheme(theme) : theme
@@ -134,6 +197,22 @@ export function applyTheme(theme: string | Theme, accent?: string): Theme {
   const root = document.documentElement
   root.setAttribute('data-theme', t.id)
   for (const [k, v] of Object.entries(t.vars)) root.style.setProperty(k, v)
-  if (accent) root.style.setProperty('--accent', accent)
+
+  let accentHex = accent
+  if (!accentHex) {
+    const fromCss =
+      typeof getComputedStyle === 'function'
+        ? getComputedStyle(root).getPropertyValue('--accent').trim()
+        : ''
+    accentHex = HEX.test(fromCss) ? fromCss : '#4f46e5'
+  }
+
+  root.style.setProperty('--accent', accentHex)
+  const onAccent = contrastText(accentHex)
+  root.style.setProperty('--accent-contrast', onAccent)
+  root.style.setProperty(
+    '--accent-strong',
+    onAccent === '#ffffff' ? mix(accentHex, '#0b0f17', 0.82) : mix(accentHex, '#ffffff', 0.8),
+  )
   return t
 }

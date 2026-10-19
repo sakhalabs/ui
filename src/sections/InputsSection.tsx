@@ -95,11 +95,20 @@ export function InputsSection() {
         column
         code={`<Field label="फोन नम्बर / Phone" error="फोन नम्बर १० अंकको हुनुपर्छ / Must be 10 digits">
   <Input error defaultValue="98412" />
+</Field>
+
+<Field label="मात्रा / Quantity" error="स्टकमा ३ मात्र छ / Only 3 in stock">
+  <NumberInput value={qty} onChange={setQty} min={1} max={99} error />
 </Field>`}
       >
         <div className="col">
           <Field label="फोन नम्बर / Phone" error="फोन नम्बर १० अंकको हुनुपर्छ / Must be 10 digits">
             <Input error defaultValue="98412" />
+          </Field>
+          <Field label="मात्रा / Quantity" error="स्टकमा ३ मात्र छ / Only 3 in stock">
+            <div style={{ maxWidth: 210 }}>
+              <NumberInput value={qty} onChange={setQty} min={1} max={99} error aria-label="Quantity error" />
+            </div>
           </Field>
         </div>
       </Example>
@@ -254,6 +263,7 @@ export function InputsSection() {
           ['NumberInput — min / max', 'number', '0 / 9999'],
           ['NumberInput — step', 'number', '1'],
           ['NumberInput — size', "'sm' | 'md' | 'lg'", "'md'"],
+          ['NumberInput — error', 'boolean', 'false'],
           ['PasswordInput — same props as Input', '—', 'show/hide toggle built in'],
         ]}
       />

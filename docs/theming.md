@@ -46,7 +46,9 @@ applyTheme(theme, accent?)
 - `theme` — a theme id (`'corporate'`), or a full `Theme` object (to define your own).
 - `accent` — `'#D61F4A'` or an accent id (`'rhododendron'`). Omit to keep the current accent.
 - Returns the applied `Theme`. Sets `data-theme="<id>"` and the theme's CSS variables as inline
-  styles on `<html>` — inline styles win over the stylesheet fallbacks.
+  styles on `<html>` — inline styles win over the stylesheet fallbacks. It also derives
+  `--accent-contrast` and `--accent-strong` from the chosen accent (pass the accent, or it reads
+  the current computed `--accent`).
 - **SSR-safe:** no-ops when `document` is undefined (Next.js/SSR won't crash).
 
 ### Startup (simplest)
@@ -111,11 +113,36 @@ Calling `applyTheme` (any theme) disables those fallbacks, because your inline v
 | `--accent` | `#4f46e5` — changed by `applyTheme(…, accent)` |
 | `--accent-soft` | `color-mix(accent 12%)` — hover fills, focus rings |
 | `--accent-border` | `color-mix(accent 40%)` |
-| `--danger` / `--danger-soft` | `#dc2626` |
-| `--success` / `--success-soft` | `#059669` |
-| `--warning` / `--warning-soft` | `#d97706` |
+| `--accent-strong` | Hover shade for solid accent fills. `applyTheme` mixes toward black or white depending on `--accent-contrast`, so light accents (amber, teal) darken and dark accents lighten |
+| `--accent-contrast` | Ink that is legible **on** the accent: `#ffffff` or `#0b0f17`. Derived by `applyTheme` from the accent's luminance |
+| `--accent-ink` | Accent-coloured *text* on a page background (`color-mix(accent 60%, text)`) — stays AA in light and dark |
+| `--danger` / `--danger-soft` / `--danger-ink` / `--danger-solid` | `#dc2626` |
+| `--success` / `--success-soft` / `--success-ink` / `--success-solid` | `#059669` / `#047857` |
+| `--warning` / `--warning-soft` / `--warning-ink` / `--warning-solid` | `#d97706` / `#b45309` |
+| `--select-arrow` | Chevron `data:` URI; flips to a lighter stroke under `[data-theme='dark']` and `prefers-color-scheme: dark` |
 
-They are derived with `color-mix()` — modern browsers only (Chrome 111+, Safari 16.2+, FF 113+).
+They are mostly derived with `color-mix()` — modern browsers only (Chrome 111+, Safari 16.2+, FF 113+).
+The `*-solid` shades exist because white text on the raw `--warning` / `--success` tints fails AA
+(3.19 / 3.77); the solid variants clear 4.5. The `*-ink` shades mix against `--text`, so they adapt
+automatically between light and dark.
+
+### Contrast helpers (exported)
+
+`applyTheme` needs the accent to derive `--accent-contrast`, but sometimes you need the same math
+yourself (charts, canvas, custom badges). These are exported from `@sakhaui/ui`:
+
+| Helper | Signature | Notes |
+|---|---|---|
+| `contrastText(bg)` | `(hex) => string` | Returns `#ffffff` or `#0b0f17` — the ink to use on `bg` |
+| `contrastRatio(a, b)` | `(hex, hex) => number` | WCAG contrast ratio (1–21) |
+| `luminance(hex)` | `(hex) => number` | Relative luminance |
+| `mix(a, b, t)` | `(hex, hex, number) => string` | `t=0` → `a`, `t=1` → `b` (mirrors `color-mix(in srgb, a (1−t), b t)`) |
+
+```ts
+import { contrastText } from '@sakhaui/ui'
+
+const label = { background: '#D97706', color: contrastText('#D97706') } // color → '#0b0f17'
+```
 
 ### Defining your own theme
 
@@ -158,4 +185,5 @@ so you can restyle with plain CSS when a variable isn't enough:
 - Money/numbers use `font-variant-numeric: tabular-nums` (already applied on numeric inputs,
   KPI values, pagination).
 - No gradients/images baked in — theming stays cheap on slow networks.
-- Touch targets stay ≥ 44px on mobile at any theme — geometry never comes from the accent color.
+- Touch targets stay ≥ 44px at any theme: `md` controls are 44 px, `sm` 36, `lg` 52, and icon-only
+  buttons pad their hit area to 44 px. Geometry never comes from the accent colour.

@@ -63,7 +63,7 @@ export function Alert({ tone = 'info', title, children, onDismiss }: AlertProps)
         {children && <p className="alert-body">{children}</p>}
       </div>
       {onDismiss && (
-        <button className="alert-close" onClick={onDismiss} aria-label="Dismiss">
+        <button type="button" className="alert-close" onClick={onDismiss} aria-label="Dismiss">
           ✕
         </button>
       )}

@@ -5,14 +5,21 @@ export interface FileDropProps {
   accept?: string
   hint?: string
   title?: string
+  disabled?: boolean
 }
 
-export function FileDrop({ onFile, accept, hint = 'PNG or JPG, up to 2 MB', title }: FileDropProps) {
+export function FileDrop({
+  onFile,
+  accept,
+  hint = 'PNG or JPG, up to 2 MB',
+  title,
+  disabled = false,
+}: FileDropProps) {
   const [name, setName] = useState<string | null>(null)
   const [active, setActive] = useState(false)
 
   const take = (file: File | undefined) => {
-    if (!file) return
+    if (!file || disabled) return
     setName(file.name)
     onFile?.(file)
   }
@@ -25,18 +32,23 @@ export function FileDrop({ onFile, accept, hint = 'PNG or JPG, up to 2 MB', titl
 
   return (
     <label
-      className={'filedrop' + (active ? ' filedrop--active' : '')}
+      className={
+        'filedrop' + (active ? ' filedrop--active' : '') + (disabled ? ' filedrop--disabled' : '')
+      }
+      aria-disabled={disabled || undefined}
       onDragOver={(e) => {
         e.preventDefault()
-        setActive(true)
+        if (!disabled) setActive(true)
       }}
       onDragLeave={() => setActive(false)}
       onDrop={onDrop}
     >
+      {/* Visually hidden, never display:none — the zone must stay keyboard-reachable. */}
       <input
         type="file"
+        className="filedrop-input"
         accept={accept}
-        style={{ display: 'none' }}
+        disabled={disabled}
         onChange={(e) => take(e.target.files?.[0] ?? undefined)}
       />
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

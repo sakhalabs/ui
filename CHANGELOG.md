@@ -8,7 +8,47 @@ Notable changes to **`@sakhaui/ui`** — the Sakhā Labs component library at [`
 
 ## [Unreleased]
 
-_Nothing yet._
+Accessibility & polish pass over the existing components — no new components, still zero runtime
+dependencies, still Tailwind-v4 friendly.
+
+### Added
+
+- `Select` — `error?: boolean` (red border + `aria-invalid`)
+- `NumberInput` — `error?: boolean` (red border + `aria-invalid`)
+- `FileDrop` — `disabled?: boolean` (blocks picking and dropping)
+- `Tabs` / `TabPanel` — optional `id`; tabs get `aria-controls`, panels get `aria-labelledby`
+- Exported contrast helpers: `contrastText`, `contrastRatio`, `luminance`, `mix`
+
+### Changed
+
+- **Touch targets** raised to the 44 px mobile minimum: `md` 40 → **44 px**, `sm` 32 → **36**, `lg` 48 → **52**.
+  Covers buttons, inputs, selects, tabs, pagination, check/switch rows, sliders and the number stepper.
+  Icon-only buttons keep a 44 px hit area via a padded `::after`.
+- **Focus rings** standardised on `outline: 2px solid var(--accent); outline-offset: 2px`. Fixes buttons
+  having **no** visible focus ring in the `brutalist` theme (its `box-shadow` was overriding the old ring).
+- **Contrast:** `applyTheme()` now derives `--accent-contrast` (legible ink on the accent) and
+  `--accent-strong` (direction-aware hover), so amber / teal / sunset accents no longer put white text on
+  a ~3.2:1 background. Tone badges and alerts use new `--*-ink` (auto light/dark) and `--*-solid` shades.
+  Measured worst case is now **4.83:1** (was 2.81:1).
+- Dark theme sets `color-scheme: dark` and a lighter `--select-arrow`; the modal uses `100dvh` +
+  `overscroll-behavior`.
+- `Modal` traps focus while open, restores it on close, focuses the first control (or `[data-autofocus]`),
+  and wires `aria-labelledby` via `useId`.
+- `Tabs` use a **roving `tabindex`** (Arrow keys + Home/End) instead of exposing every tab to the tab order.
+- `FileDrop`'s `<input type="file">` is now visually hidden (clipped) instead of `display:none`, so the
+  drop zone is keyboard- and screen-reader-reachable.
+- `Button` sets `aria-busy` when `loading`; `Input` / `Textarea` / `NumberInput` / `Select` set
+  `aria-invalid` on error; `Field`'s error message is `role="alert"`.
+- Close / icon buttons (`Alert`, `Toast`, `Modal`) and pagination buttons are explicit `type="button"`
+  with `aria-label`s; `Tabs`/`TabPanel` panels are focusable.
+- `prefers-reduced-motion: reduce` disables component transitions.
+
+### Fixed
+
+- `NumberInput` rendered 2 px short (42 px) because it inherited the input-group's border-compensated
+  height while carrying no border of its own — now a true 44 / 36 / 52 px.
+- Soft tone badges and tone alerts failed AA on their own tint (2.81–4.01:1); the new `--*-ink` mixes
+  pass ≥ 4.5 in both light and dark.
 
 ## [1.0.0] — 2026-10-19
 

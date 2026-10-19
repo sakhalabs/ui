@@ -6,6 +6,8 @@ export interface NumberInputProps {
   step?: number
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
+  /** Red borders + `aria-invalid`, matching Input. */
+  error?: boolean
   'aria-label'?: string
   id?: string
 }
@@ -19,12 +21,19 @@ export function NumberInput({
   step = 1,
   size = 'md',
   disabled = false,
+  error = false,
   ...rest
 }: NumberInputProps) {
   const clamp = (n: number) => Math.min(max, Math.max(min, n))
 
   return (
-    <span className={'input-group number-input' + (size !== 'md' ? ` number-input--${size}` : '')}>
+    <span
+      className={
+        'input-group number-input' +
+        (size !== 'md' ? ` number-input--${size}` : '') +
+        (error ? ' number-input--error' : '')
+      }
+    >
       <button
         type="button"
         className="number-step"
@@ -42,6 +51,7 @@ export function NumberInput({
         max={max}
         step={step}
         disabled={disabled}
+        aria-invalid={error || undefined}
         onChange={(e) => {
           const raw = e.target.value
           if (raw === '') {

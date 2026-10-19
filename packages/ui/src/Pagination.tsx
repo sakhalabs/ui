@@ -17,6 +17,7 @@ export function Pagination({ page, pageCount, onChange }: PaginationProps) {
   return (
     <nav className="pagination" aria-label="Pagination">
       <button
+        type="button"
         className="page-btn"
         disabled={page <= 1}
         onClick={() => onChange(page - 1)}
@@ -32,7 +33,9 @@ export function Pagination({ page, pageCount, onChange }: PaginationProps) {
         ) : (
           <button
             key={p}
+            type="button"
             className={'page-btn' + (p === page ? ' page-btn--active' : '')}
+            aria-label={`Page ${p}`}
             aria-current={p === page ? 'page' : undefined}
             onClick={() => onChange(p)}
           >
@@ -41,6 +44,7 @@ export function Pagination({ page, pageCount, onChange }: PaginationProps) {
         ),
       )}
       <button
+        type="button"
         className="page-btn"
         disabled={page >= pageCount}
         onClick={() => onChange(page + 1)}

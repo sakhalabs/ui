@@ -31,6 +31,7 @@ export function Button({
         (className ? ` ${className}` : '')
       }
       disabled={disabled || loading}
+      aria-busy={loading || undefined}
       {...rest}
     >
       {loading && <span className="spinner" aria-hidden="true" />}
