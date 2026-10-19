@@ -50,15 +50,17 @@ jobs:
           npm ci
           npm run build:ui
 
+      # Public-repo job logs need a GitHub sign-in to read, so on failure we
+      # re-emit the npm error as a check-run annotation, which is readable
+      # without auth (via the API) and shows up in the run's Annotations tab.
       - name: Install the site
         working-directory: site
         run: |
           set -o pipefail
-          if npm ci --no-audit --no-fund > /tmp/site-install.log 2>&1; then
-            tail -3 /tmp/site-install.log
+          if npm ci --no-audit --no-fund 2>&1 | tee /tmp/site-install.log; then
             exit 0
           fi
-          MSG=$(tail -20 /tmp/site-install.log | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+          MSG=$(head -25 /tmp/site-install.log | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
           echo "::error title=npm ci (site) failed::$MSG"
           exit 1
 
