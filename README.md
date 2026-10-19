@@ -1,5 +1,10 @@
 # UIUXSakha — UI/UX Template Catalog + Component Library for Sakhā Labs
 
+[![npm version](https://img.shields.io/npm/v/@sakhalabs/ui.svg?label=%40sakhalabs%2Fui)](https://www.npmjs.com/package/@sakhalabs/ui)
+[![npm downloads](https://img.shields.io/npm/dm/@sakhalabs/ui.svg)](https://www.npmjs.com/package/@sakhalabs/ui)
+[![license](https://img.shields.io/npm/l/@sakhalabs/ui.svg)](LICENSE)
+[![GitHub](https://img.shields.io/github/stars/sakhalabs/ui?style=flat&label=github)](https://github.com/sakhalabs/ui)
+
 A catalog of named UI/UX styles ("templates") for every kind of software Sakhā Labs builds,
 plus **Sakha UI** — a live React component library showcase built on those templates.
 Each template has a **stable ID**, a **description**, **design rules**, and a **ready-to-paste AI prompt**.
@@ -19,9 +24,16 @@ Later, when generating UI with AI tools, you paste the template prompt + the pro
 
 ## @sakhalabs/ui — the reusable component library
 
-The library lives in **`packages/ui/`** as a standalone npm workspace package
-(`@sakhalabs/ui` v1.1.0) — install it in any of your projects for consistent design.
+The library lives in **`packages/ui/`** as a standalone npm workspace package —
+**`@sakhalabs/ui` v1.1.0**, [published on npm](https://www.npmjs.com/package/@sakhalabs/ui).
+Install it in any of your projects for consistent design.
 The showcase app at the repo root is just one of its consumers.
+
+```bash
+npm i @sakhalabs/ui       # use the published package in any project
+```
+
+Working on this repo itself:
 
 ```bash
 npm.cmd install                          # workspace install
@@ -51,10 +63,17 @@ npm.cmd run build:site    # static build → site/dist/
 install options and troubleshooting: **[docs/getting-started.md](docs/getting-started.md)**
 
 ```bash
+npm i @sakhalabs/ui
+```
+
+**Local development** (working on the library itself) — point the other project at this workspace
+instead of the registry:
+
+```bash
 # 1. build the library once (from this repo)
 npm.cmd run build:ui
 
-# 2. in the other project, add a file: dependency (any of these forms)
+# 2. in the other project, add a file: dependency
 npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
 # …or pack a versioned tarball you can commit/archive:
 npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.1.0.tgz

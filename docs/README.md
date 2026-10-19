@@ -19,6 +19,10 @@ Nepali/bilingual UX rules — so designs stay consistent and you stop re-buildin
 
 ## 30-second preview
 
+```bash
+npm install @sakhalabs/ui
+```
+
 ```tsx
 import { ToastProvider, Button, NumberInput, Modal, applyTheme } from '@sakhalabs/ui'
 import '@sakhalabs/ui/styles.css'

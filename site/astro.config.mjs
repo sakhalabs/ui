@@ -13,6 +13,8 @@ export default defineConfig({
       title: 'Sakha UI',
       description:
         'The Sakhā Labs React component library — CSS-variable themed, bilingual (Nepali/English) ready, mobile-first, and WCAG AA.',
+      logo: { src: './src/assets/logo.svg', alt: 'Sakha UI' },
+      favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/sakhalabs/ui' },
@@ -30,7 +32,21 @@ export default defineConfig({
         },
         {
           label: 'Components',
-          items: [{ label: 'Component reference', slug: 'components' }],
+          items: [
+            { label: 'Overview', slug: 'components' },
+            { label: 'Actions', items: [{ autogenerate: { directory: 'components/actions' } }] },
+            { label: 'Inputs', items: [{ autogenerate: { directory: 'components/inputs' } }] },
+            { label: 'Selection', items: [{ autogenerate: { directory: 'components/selection' } }] },
+            { label: 'Feedback', items: [{ autogenerate: { directory: 'components/feedback' } }] },
+            {
+              label: 'Data display',
+              items: [{ autogenerate: { directory: 'components/data-display' } }],
+            },
+            {
+              label: 'Navigation & overlays',
+              items: [{ autogenerate: { directory: 'components/navigation' } }],
+            },
+          ],
         },
         {
           label: 'Template catalog',

@@ -6,6 +6,26 @@ Notable changes to **`@sakhalabs/ui`** — the Sakhā Labs component library at 
 - Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 - The version here matches `packages/ui/package.json`.
 
+## [Unreleased]
+
+Docs-site and packaging polish — no changes to the library or its runtime.
+
+### Added
+
+- **Custom 404 page** for the docs site, plus a **logo mark and favicon** (header + browser tab).
+- **npm badge** and a published-package install snippet in the root `README.md` and on the docs
+  landing page.
+
+### Changed
+
+- **Component reference split into per-component pages.** The single `components.md` reference is now
+  a `components/` section — one page per component (grouped under Actions, Inputs, Selection,
+  Feedback, Data display, and Navigation & overlays) with an overview page that keeps the export list
+  and the gotchas list.
+- **`docs/publishing.md`** now documents the **staged publishing** flow (`npm stage publish` →
+  `npm stage approve`) alongside a direct `npm publish`, and explains the `0.0.0-stage` placeholder
+  that a brand-new package gets.
+
 ## [1.1.0] — 2026-10-20
 
 **First public npm release.** Accessibility & polish pass over the 1.0.0 components — no new

@@ -4,14 +4,28 @@ description: Install the library and render your first component.
 ---
 
 This is the full workflow for consuming the library from any of your other repos
-(PasalSakhā, the SakhaLabs site, new tools, …). No npm account, no internet — it installs
-from your disk.
+(PasalSakhā, the SakhaLabs site, new tools, …). It's published on the public npm registry, so most
+projects only need one command.
 
 ---
 
-## 1. Build the library (once)
+## 1. Install it into your project
 
-The package serves its built `dist/` folder. Build it from the UIUXSakha repo root:
+### Option A — from npm (recommended)
+
+```bash
+npm install @sakhalabs/ui
+```
+
+Installing needs no account. The package follows semver: pin an exact release with
+`npm i @sakhalabs/ui@1.1.0`, or track updates with `npm update @sakhalabs/ui`.
+
+### Option B — `file:` dependency (live edits from this machine)
+
+Use this while you are **developing the library itself** — the consuming project symlinks to this
+repo, so a rebuild shows up instantly with no reinstall.
+
+First build the library once from the UIUXSakha repo root:
 
 ```bash
 cd C:\Users\NAN\Desktop\OpenCode\UIUXSakha
@@ -28,16 +42,7 @@ packages/ui/dist/
 └── ui.css         # all component styles
 ```
 
-> Re-run `build:ui` **whenever you change library code**. `file:` installs symlink to this
-> folder, so a rebuild is immediately picked up by the consuming project (no reinstall).
-
----
-
-## 2. Install it into your project
-
-Pick one option:
-
-### Option A — `file:` dependency (recommended for projects on this machine)
+Then point the consuming project at it:
 
 ```bash
 cd C:\path\to\PasalSakhA        # the consuming project
@@ -56,19 +61,21 @@ Or add it manually to the consuming project's `package.json` (forward slashes, n
 
 then `npm.cmd install`. npm creates a **symlink** — rebuilds of the library show up instantly.
 
-### Option B — packed tarball (portable, version-pinned)
+### Option C — packed tarball (portable, version-pinned)
 
 Better when you want something you can commit, archive, or copy to another machine:
 
 ```bash
+# in UIUXSakha:
 npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.1.0.tgz
 
+# in the consuming project:
 npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.1.0.tgz"
 ```
 
 This **copies** `dist/` into `node_modules` — stable until you re-pack and reinstall to update.
 
-### Option C — workspace / monorepo alias (developing library + app together)
+### Option D — workspace / monorepo alias (developing library + app together)
 
 If the other project lives in the same workspace, skip installing and point your bundler at the
 source, exactly like the showcase does:
@@ -90,7 +97,7 @@ resolve: {
 
 ---
 
-## 3. One-time setup in the consuming app
+## 2. One-time setup in the consuming app
 
 Two imports, once each, near your app entry (`main.tsx` / `index.tsx` / `app/layout.tsx`):
 
@@ -117,7 +124,7 @@ root.render(
 
 ---
 
-## 4. Use components
+## 3. Use components
 
 ```tsx
 import { Button, Field, Input, NumberInput, Select, Modal, useToast } from '@sakhalabs/ui'
@@ -182,13 +189,21 @@ current bundler and Node ≥ 16.
 
 ## Updating the library later
 
+**npm installs** — update as usual:
+
+```bash
+npm update @sakhalabs/ui        # within the range in your package.json
+```
+
+**Local installs** — edit components in `packages/ui/src/`, then rebuild from the repo root:
+
 ```bash
 cd C:\Users\NAN\Desktop\OpenCode\UIUXSakha
 npm.cmd run build:ui
 ```
 
-- **Option A (`file:`)** → consuming project sees the new build immediately (symlink).
-- **Option B (tarball)** → re-pack and reinstall:
+- **Option B (`file:`)** → the consuming project sees the new build immediately (symlink).
+- **Option C (tarball)** → re-pack and reinstall:
   ```bash
   npm.cmd pack --workspace @sakhalabs/ui
   npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.1.0.tgz" --force
@@ -206,7 +221,7 @@ it hot-reloads the same source: `npm.cmd run dev` → http://localhost:5181.
 | Components render but look unstyled / raw HTML | `import '@sakhalabs/ui/styles.css'` is missing or duplicated somewhere else. |
 | In a Tailwind project buttons/inputs lost their borders or looks | Import order: `@import "tailwindcss"` must come **before** `@import "@sakhalabs/ui/styles.css"` — see [Tailwind CSS v4](/tailwind/). |
 | Everything styled but wrong colors/layout | `applyTheme(theme, accent)` never ran — call it once at startup (fallbacks kick in only if you skip it entirely). |
-| `Cannot find module '@sakhalabs/ui'` | Run `npm.cmd run build:ui` first (if `dist/` is missing the exports can't resolve), then reinstall. |
+| `Cannot find module '@sakhalabs/ui'` | For npm installs, confirm the version exists (`npm view @sakhalabs/ui version`) and reinstall. For local installs, run `npm.cmd run build:ui` first (without `dist/` the exports can't resolve), then reinstall. |
 | `ERR_UNKNOWN_FILE_EXTENSION` / ESM errors in Node scripts | Use a bundler, or set `"type": "module"` in the consuming project. |
 | Types missing in the editor | Confirm `packages/ui/dist/index.d.ts` exists (run `build:ui`) and that `node_modules/@sakhalabs/ui` resolves — try restarting the TS server. |
-| Changes to the library don't appear | `file:` → rebuild the library. Tarball → re-pack + reinstall (see above). |
+| Changes to the library don't appear | npm → bump the version and republish. `file:` → rebuild the library. Tarball → re-pack + reinstall (see above). |
