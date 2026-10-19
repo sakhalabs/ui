@@ -1,12 +1,12 @@
 name: Deploy docs site
 
 # Builds the library, then the Astro/Starlight site, and publishes site/dist to
-# GitHub Pages. One-time setup (repo → Settings → Pages): set Source = "GitHub
-# Actions" and the custom domain to ui.sakhalabs.com.
+# GitHub Pages. One-time setup (repo → Settings → Pages): set Source to
+# "GitHub Actions" and the custom domain to ui.sakhalabs.com.
 #
 # Local equivalent of the build steps:
 #   npm ci && npm run build:ui
-#   npm ci --prefix site && npm run build:site
+#   npm install --prefix site && npm run build:site
 
 on:
   push:
@@ -33,9 +33,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -50,29 +50,37 @@ jobs:
           npm ci
           npm run build:ui
 
-      # Public-repo job logs need a GitHub sign-in to read, so on failure we
-      # re-emit the npm error as a check-run annotation, which is readable
-      # without auth (via the API) and shows up in the run's Annotations tab.
+      # `npm install`, not `npm ci`: the site lockfile is generated on Windows,
+      # and `npm ci` refuses a lockfile that lacks the platform-specific
+      # optional dependencies that Linux resolves (e.g. "@emnapi/core ... Missing
+      # from lock file"). npm install resolves those extras on the runner.
+      #
+      # Public-repo job logs need a GitHub sign-in to read, so on failure the npm
+      # error is re-emitted as a check-run annotation, which is readable without
+      # auth (run → Annotations tab, or the REST API).
       - name: Install the site
         working-directory: site
         run: |
           set -o pipefail
-          if npm ci --no-audit --no-fund 2>&1 | tee /tmp/site-install.log; then
+          if npm install --no-audit --no-fund 2>&1 | tee /tmp/site-install.log; then
             exit 0
           fi
           MSG=$(head -25 /tmp/site-install.log | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
-          echo "::error title=npm ci (site) failed::$MSG"
+          echo "::error title=npm install (site) failed::$MSG"
           exit 1
 
       - name: Build the site
         working-directory: site
         run: npm run build
 
+      # enablement turns Pages on if it has not been enabled in repo settings yet.
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
+        with:
+          enablement: true
 
       - name: Upload the site artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: site/dist
 
@@ -85,4 +93,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

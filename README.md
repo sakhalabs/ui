@@ -69,6 +69,10 @@ to **GitHub Pages** by [`.github/workflows/deploy-site.yml`](.github/workflows/d
 "GitHub Actions"**, set the custom domain to `ui.sakhalabs.com`, and point a `CNAME` DNS record for
 `ui` at `sakhalabs.github.io`. The custom domain is also declared in `site/public/CNAME`.
 
+> The site installs with `npm install` in CI (not `npm ci`) because its lockfile is generated on
+> Windows and `npm ci` cannot satisfy the Linux-only optional dependencies (e.g. `@emnapi/*`) that
+> the runner resolves. The library workspace still uses `npm ci`.
+
 **Using it in your other projects** (PasalSakhā, SakhaLabs site, …) — full guide with all
 install options and troubleshooting: **[docs/getting-started.md](docs/getting-started.md)**
 
