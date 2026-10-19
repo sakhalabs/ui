@@ -18,6 +18,9 @@ Docs-site and packaging polish — no changes to the library or its runtime.
 - **Custom 404 page** for the docs site, plus a **logo mark and favicon** (header + browser tab).
 - **npm badge** and a published-package install snippet in the root `README.md` and on the docs
   landing page.
+- **GitHub Pages deployment** — `.github/workflows/deploy-site.yml` builds the library and the site
+  and publishes to <https://ui.sakhalabs.com> on every push to `main` that touches `site/` or
+  `packages/ui/`.
 
 ### Changed
 
@@ -29,6 +32,10 @@ Docs-site and packaging polish — no changes to the library or its runtime.
   `npm stage approve`) alongside a direct `npm publish`, and explains the `0.0.0-stage` placeholder
   that a brand-new package gets.
 - The docs site's canonical URL is set to **`https://ui.sakhalabs.com`** (canonical tags + sitemap).
+- **`packages/ui/package.json`** now points `homepage` at the docs site
+  (<https://ui.sakhalabs.com>) instead of GitHub — takes effect on the next publish.
+- Root npm scripts are **cross-platform** (`npm` instead of `npm.cmd`, which does not exist on
+  Linux CI), and `build:site` now builds the library first through a `prebuild:site` hook.
 
 ## [1.1.0] — 2026-10-20
 

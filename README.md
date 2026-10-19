@@ -57,10 +57,17 @@ npm.cmd run dev:site      # docs dev server → http://localhost:4321
 npm.cmd run build:site    # static build → site/dist/
 ```
 
-> The site consumes the library through `file:../packages/ui`, so run `npm.cmd run build:ui`
-> first if `packages/ui/dist/` is missing. The canonical URL (`site:` in `site/astro.config.mjs`)
-> is set to `https://ui.sakhalabs.com` — it feeds the canonical tags and the sitemap; update it if
-> the host ever changes.
+> The site consumes the library through `file:../packages/ui`, so `packages/ui/dist/` must exist.
+> `npm.cmd run build:site` builds the library first automatically (`prebuild:site`); for the dev
+> server, run `npm.cmd run build:ui` once beforehand. The canonical URL (`site:` in
+> `site/astro.config.mjs`) is set to `https://ui.sakhalabs.com` — it feeds the canonical tags and
+> the sitemap; update it if the host ever changes.
+
+**Deploying** — every push to `main` that touches `site/` or `packages/ui/` is built and published
+to **GitHub Pages** by [`.github/workflows/deploy-site.yml`](.github/workflows/deploy-site.yml)
+(→ <https://ui.sakhalabs.com>). One-time setup in the repo: **Settings → Pages → Source =
+"GitHub Actions"**, set the custom domain to `ui.sakhalabs.com`, and point a `CNAME` DNS record for
+`ui` at `sakhalabs.github.io`. The custom domain is also declared in `site/public/CNAME`.
 
 **Using it in your other projects** (PasalSakhā, SakhaLabs site, …) — full guide with all
 install options and troubleshooting: **[docs/getting-started.md](docs/getting-started.md)**

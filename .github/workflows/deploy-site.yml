@@ -1,0 +1,78 @@
+name: Deploy docs site
+
+# Builds the library, then the Astro/Starlight site, and publishes site/dist to
+# GitHub Pages. One-time setup (repo → Settings → Pages): set Source = "GitHub
+# Actions" and the custom domain to ui.sakhalabs.com.
+#
+# Local equivalent of the build steps:
+#   npm ci && npm run build:ui
+#   npm ci --prefix site && npm run build:site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'packages/ui/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-site.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push supersedes a run still in flight.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            site/package-lock.json
+
+      # The site imports the library's built CSS, so the library must be built
+      # first (dist/ is gitignored and is not in the repo).
+      - name: Install the workspace and build the library
+        run: |
+          npm ci
+          npm run build:ui
+
+      - name: Install the site
+        working-directory: site
+        run: npm ci
+
+      - name: Build the site
+        working-directory: site
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

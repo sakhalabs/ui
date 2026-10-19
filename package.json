@@ -9,9 +9,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:ui": "npm.cmd run build --workspace @sakhalabs/ui",
-    "dev:site": "npm.cmd run dev --prefix site",
-    "build:site": "npm.cmd run build --prefix site",
+    "build:ui": "npm run build --workspace @sakhalabs/ui",
+    "dev:site": "npm run dev --prefix site",
+    "prebuild:site": "npm run build:ui",
+    "build:site": "npm run build --prefix site",
     "preview": "vite preview"
   },
   "dependencies": {
