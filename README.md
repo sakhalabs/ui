@@ -9,7 +9,8 @@ Later, when generating UI with AI tools, you paste the template prompt + the pro
 > [getting-started](docs/getting-started.md) (install & first component),
 > [tailwind](docs/tailwind.md) (Tailwind CSS v4 setup),
 > [theming](docs/theming.md) (themes, accents, dark mode),
-> [components](docs/components.md) (full props reference).
+> [components](docs/components.md) (full props reference),
+> [changelog](CHANGELOG.md) (release history & versioning).
 
 ## @sakhaui/ui — the reusable component library
 
@@ -33,7 +34,7 @@ npm.cmd run build:ui
 
 # 2. in the other project, add a file: dependency (any of these forms)
 npm.cmd i "@sakhaui/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
-# …or pack a versioned tarball you can commit/archieve:
+# …or pack a versioned tarball you can commit/archive:
 npm.cmd pack --workspace @sakhaui/ui     # → sakhaui-ui-1.0.0.tgz
 ```
 
