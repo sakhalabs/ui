@@ -33,5 +33,5 @@ From the repo root you can use `npm.cmd run dev:site` / `npm.cmd run build:site`
 ## Before going live
 
 - Set the real URL in `astro.config.mjs` → `site:` (canonical links + sitemap).
-- Replace the `github.com/OWNER/...` links in `astro.config.mjs` and
-  `src/content/docs/catalog/index.md` with the real repo URL.
+- The GitHub links already point at `github.com/sakhalabs/ui` (`astro.config.mjs` and
+  `src/content/docs/catalog/index.md`); update them if the repo moves.

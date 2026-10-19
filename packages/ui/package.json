@@ -24,14 +24,14 @@
   "author": {
     "name": "Sakhā Labs"
   },
-  "homepage": "https://github.com/OWNER/uiux-sakha#readme",
+  "homepage": "https://github.com/sakhalabs/ui/tree/main/packages/ui#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/uiux-sakha.git",
+    "url": "git+https://github.com/sakhalabs/ui.git",
     "directory": "packages/ui"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/uiux-sakha/issues"
+    "url": "https://github.com/sakhalabs/ui/issues"
   },
   "publishConfig": {
     "access": "public"

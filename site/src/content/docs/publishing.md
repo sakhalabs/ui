@@ -21,10 +21,9 @@ This is the release runbook for the component library. Everything in the repo is
    npm login
    ```
 
-4. **Fill in the repository URLs.** `packages/ui/package.json` currently has placeholder
-   `homepage` / `repository` / `bugs` values (`github.com/OWNER/uiux-sakha`). Replace `OWNER`
-   with the real GitHub org/user. The preflight check **refuses to publish** while placeholders
-   remain, so this is enforced rather than remembered.
+4. **Repository URLs.** `packages/ui/package.json` points `homepage` / `repository` / `bugs` at
+   `github.com/sakhalabs/ui` (`repository.directory` is `packages/ui`). If the repo ever moves,
+   update them here — the preflight check **refuses to publish** while placeholder values remain.
 
 ## Every release
 

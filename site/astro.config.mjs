@@ -15,7 +15,7 @@ export default defineConfig({
         'The Sakhā Labs React component library — CSS-variable themed, bilingual (Nepali/English) ready, mobile-first, and WCAG AA.',
       customCss: ['./src/styles/custom.css'],
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/OWNER/uiux-sakha' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/sakhalabs/ui' },
         { icon: 'npm', label: 'npm', href: 'https://www.npmjs.com/package/@sakhalabs/ui' },
       ],
       sidebar: [

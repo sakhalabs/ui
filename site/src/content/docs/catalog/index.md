@@ -14,7 +14,7 @@ and a ready-to-paste AI prompt. They are the design intent behind the library's 
 | [AI and chat interfaces](/catalog/ai-chat-interfaces/) | Chat, assistant and AI-tool UIs |
 
 The raw machine-readable list — stable IDs, themes, accents and prompts — lives in
-[`templates.json`](https://github.com/OWNER/uiux-sakha/blob/main/templates.json) at the repo root.
+[`templates.json`](https://github.com/sakhalabs/ui/blob/main/templates.json) at the repo root.
 
 ## How to use a template
 
