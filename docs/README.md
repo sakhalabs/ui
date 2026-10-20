@@ -58,7 +58,7 @@ UIUXSakha/
 ├── src/                    ← showcase app (a consumer of the library)
 ├── site/                   ← docs & marketing site (Astro Starlight; self-contained)
 ├── docs/                   ← these docs
-├── templates.json          ← 18 AI-ready UI template prompts (separate deliverable)
+├── misx/templates.json          ← 18 AI-ready UI template prompts (separate deliverable)
 └── README.md               ← catalog + project overview
 ```
 

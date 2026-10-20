@@ -132,15 +132,15 @@ npm.cmd run dev     # showcase at http://localhost:5181
 
 | File | What's inside |
 |---|---|
-| `marketing-websites.md` | Landing pages, product sites, company sites (6 templates) |
-| `dashboards-pos.md` | Admin panels, POS, billing, reports, analytics (5 templates) |
-| `mobile-apps.md` | Phone-first apps — lists, tabs, onboarding, wallet (4 templates) |
-| `ai-chat-interfaces.md` | AI/chat products, workbenches, settings (3 templates) |
-| `templates.json` | All 18 templates as structured data — attach to any AI tool as context |
+| `misx/marketing-websites.md` | Landing pages, product sites, company sites (6 templates) |
+| `misx/dashboards-pos.md` | Admin panels, POS, billing, reports, analytics (5 templates) |
+| `misx/mobile-apps.md` | Phone-first apps — lists, tabs, onboarding, wallet (4 templates) |
+| `misx/ai-chat-interfaces.md` | AI/chat products, workbenches, settings (3 templates) |
+| `misx/templates.json` | All 18 templates as structured data — attach to any AI tool as context |
 | `packages/ui/src/` | Library source: all components above, `index.ts` (barrel), `tokens.ts` (themes/accents/applyTheme), `styles.css` |
 | `packages/ui/dist/` | Built package: `index.js`, `index.d.ts`, `ui.css` |
-| `src/sections/` | Showcase sections: Buttons, Text inputs, Selection, Feedback, Overlays, Data display |
-| `src/doc/` | Showcase-only `Example` doc block (preview + copy code + props table) |
+| `showcase/src/sections/` | Showcase sections: Buttons, Text inputs, Selection, Feedback, Overlays, Data display |
+| `showcase/src/doc/` | Showcase-only `Example` doc block (preview + copy code + props table) |
 
 ## Template IDs
 
@@ -152,7 +152,7 @@ npm.cmd run dev     # showcase at http://localhost:5181
 ## How to use with AI tools
 
 1. **Pick a template** that matches the product type (see "When to use" in each doc).
-2. **Copy the template's prompt block** from the Markdown file or `templates.json` → `prompt`.
+2. **Copy the template's prompt block** from the Markdown file or `misx/templates.json` → `prompt`.
 3. **Append the Product Context block** (below) filled in for your product.
 4. **Append the Global Rules block** (below) — these apply to every Sakhā Labs product.
 5. Generate. If the result drifts, re-state the template's "Do not" list explicitly.
@@ -188,5 +188,5 @@ GLOBAL RULES (Sakhā Labs)
 ## Adding a new template
 
 1. Add a section to the right Markdown file using the same structure (ID, description, when to use, look & feel, components, UX rules, do-nots, prompt).
-2. Add a matching entry to `templates.json` with the same `id` and `prompt`.
+2. Add a matching entry to `misx/templates.json` with the same `id` and `prompt`.
 3. IDs are stable — never rename an existing one, only deprecate.
