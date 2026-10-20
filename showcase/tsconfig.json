@@ -15,8 +15,8 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@sakhalabs/ui": ["./packages/ui/src/index.ts"]
+      "@sakhalabs/ui": ["../packages/ui/src/index.ts"]
     }
   },
-  "include": ["src", "packages/ui/src"]
+  "include": ["src", "../packages/ui/src"]
 }

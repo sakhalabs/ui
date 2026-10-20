@@ -7,9 +7,9 @@ export default defineConfig({
   server: { port: 5181 },
   resolve: {
     alias: {
-      // Dev against package source — no build step needed while developing.
+      // Dev against package source - no build step needed while developing.
       // Production consumers use the built dist/ via the package exports.
-      '@sakhalabs/ui': fileURLToPath(new URL('./packages/ui/src/index.ts', import.meta.url)),
+      '@sakhalabs/ui': fileURLToPath(new URL('../packages/ui/src/index.ts', import.meta.url)),
     },
   },
 })

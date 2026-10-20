@@ -36,6 +36,10 @@ Docs-site and packaging polish — no changes to the library or its runtime.
   (<https://ui.sakhalabs.com>) instead of GitHub — takes effect on the next publish.
 - Root npm scripts are **cross-platform** (`npm` instead of `npm.cmd`, which does not exist on
   Linux CI), and `build:site` now builds the library first through a `prebuild:site` hook.
+- **Showcase moved to `showcase/`.** The React/Vite showcase (previously at the repo root) now
+  lives in its own folder with its own `package.json` and lockfile, keeping it separate from the
+  Astro docs site (`site/`) and the library (`packages/ui/`). Root scripts delegate via
+  `--prefix showcase`, so `npm run dev` / `npm run build` / `npm run preview` still work.
 
 ## [1.1.0] — 2026-10-20
 

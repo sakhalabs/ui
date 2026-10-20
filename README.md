@@ -27,7 +27,7 @@ Later, when generating UI with AI tools, you paste the template prompt + the pro
 The library lives in **`packages/ui/`** as a standalone npm workspace package —
 **`@sakhalabs/ui` v1.1.0**, [published on npm](https://www.npmjs.com/package/@sakhalabs/ui).
 Install it in any of your projects for consistent design.
-The showcase app at the repo root is just one of its consumers.
+The showcase app lives in **`showcase/`** and is just one of its consumers.
 
 ```bash
 npm i @sakhalabs/ui       # use the published package in any project
@@ -36,11 +36,19 @@ npm i @sakhalabs/ui       # use the published package in any project
 Working on this repo itself:
 
 ```bash
-npm.cmd install                          # workspace install
-npm.cmd run dev                          # showcase: http://localhost:5181
-npm.cmd run build                        # typecheck + build showcase
-npm.cmd run build:ui                     # build library → packages/ui/dist/
+npm.cmd install                          # workspace install (packages/ui + showcase deps via file:)
+npm.cmd run dev                          # showcase: http://localhost:5181  (lives in showcase/)
+npm.cmd run build                        # typecheck + build showcase -> showcase/dist/
+npm.cmd run build:ui                     # build library -> packages/ui/dist/
 ```
+
+The three runnable projects are kept separate on disk:
+
+| Folder | What | Run |
+|---|---|---|
+| `showcase/` | React + Vite component showcase (port 5181) | `npm.cmd run dev` |
+| `site/` | Astro + Starlight docs site (port 4321) | `npm.cmd run dev:site` |
+| `packages/ui/` | `@sakhalabs/ui` library | `npm.cmd run build:ui` |
 
 ### Documentation site (`site/`)
 

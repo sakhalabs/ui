@@ -16,6 +16,9 @@ Nepali/bilingual UX rules — so designs stay consistent and you stop re-buildin
 > These Markdown docs are also published as a site — **<https://ui.sakhalabs.com>** — with live
 > demos, search and dark mode. To run it locally: `npm.cmd run dev:site` from the repo root, then
 > open <http://localhost:4321>.
+>
+> The React component showcase (the other runnable app) lives in **`showcase/`** and runs on
+> port 5181 via `npm.cmd run dev`.
 
 ## 30-second preview
 
