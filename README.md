@@ -65,6 +65,8 @@ npm.cmd run dev:site      # docs dev server → http://localhost:4321
 npm.cmd run build:site    # static build → site/dist/
 ```
 
+> Windows shortcut: `site\start.bat` (installs deps if missing, opens the browser, then runs the dev server).
+
 > The site consumes the library through `file:../packages/ui`, so `packages/ui/dist/` must exist.
 > `npm.cmd run build:site` builds the library first automatically (`prebuild:site`); for the dev
 > server, run `npm.cmd run build:ui` once beforehand. The canonical URL (`site:` in
