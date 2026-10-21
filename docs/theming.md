@@ -154,7 +154,7 @@ import { applyTheme, getTheme, type Theme } from '@sakhalabs/ui'
 const myTheme: Theme = {
   ...getTheme('clean'),
   id: 'sakha-soft',                 // data-theme attribute value
-  name: 'Sakha Soft',
+  name: 'Sakhā Soft',
   description: 'Custom brand theme',
   vars: {
     ...getTheme('clean').vars,

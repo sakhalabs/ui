@@ -1,4 +1,4 @@
-# Sakha UI — Documentation
+# Sakhā UI — Documentation
 
 **`@sakhalabs/ui`** is the reusable React component library of Sakhā Labs. One install gives every
 product (PasalSakhā, dashboards, sites, tools) the same components, the same themes and the same
@@ -50,7 +50,7 @@ export function App() {
 ## Where things live
 
 ```
-UIUXSakha/
+SakhaUI/
 ├── packages/ui/            ← the library (@sakhalabs/ui)
 │   ├── src/                ← component source (TSX) + styles.css + tokens.ts
 │   ├── dist/               ← built output: index.js, index.d.ts, ui.css

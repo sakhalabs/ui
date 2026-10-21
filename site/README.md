@@ -1,4 +1,4 @@
-# Sakha UI — docs & marketing site
+# Sakhā UI — docs & marketing site
 
 The public site for **`@sakhalabs/ui`**, the Sakhā Labs React component library.
 

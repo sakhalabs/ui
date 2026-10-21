@@ -1,5 +1,5 @@
 /* ============================================================
-   Sakha UI — component styles
+   Sakhā UI — component styles
    Everything is CSS-variable driven; themes swap the variables.
    ============================================================ */
 
@@ -377,6 +377,12 @@ body {
   background-position: right 12px center;
 }
 .select:disabled { cursor: not-allowed; }
+/* Native <option> popup: match the theme surface/text so the dropdown list is
+   readable in both light and dark themes (some browsers/OS default to white). */
+.select option {
+  background: var(--surface);
+  color: var(--text);
+}
 
 /* ---------- Checkbox / Radio ---------- */
 .check {

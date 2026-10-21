@@ -10,10 +10,10 @@ export default defineConfig({
 
   integrations: [
     starlight({
-      title: 'Sakha UI',
+      title: 'Sakhā UI',
       description:
         'The Sakhā Labs React component library — CSS-variable themed, bilingual (Nepali/English) ready, mobile-first, and WCAG AA.',
-      logo: { src: './src/assets/logo.svg', alt: 'Sakha UI' },
+      logo: { src: './src/assets/logo.svg', alt: 'Sakhā UI' },
       favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
       social: [

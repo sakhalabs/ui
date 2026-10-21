@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "description": "Documentation & marketing site for Sakha UI (@sakhalabs/ui).",
+  "description": "Documentation & marketing site for Sakhā UI (@sakhalabs/ui).",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

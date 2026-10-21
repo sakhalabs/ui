@@ -64,7 +64,7 @@ components, still zero runtime dependencies, still Tailwind-v4 friendly.
 
 - **Package renamed `@sakhaui/ui` → `@sakhalabs/ui`.** The scope now names the org rather than the
   product, leaving room for `@sakhalabs/icons` / `@sakhalabs/tokens` later. Nothing had been published,
-  so there is no migration; the product/marketing name "Sakha UI" is unchanged.
+  so there is no migration; the product/marketing name "Sakhā UI" is unchanged.
 - **Touch targets** raised to the 44 px mobile minimum: `md` 40 → **44 px**, `sm` 32 → **36**, `lg` 48 → **52**.
   Covers buttons, inputs, selects, tabs, pagination, check/switch rows, sliders and the number stepper.
   Icon-only buttons keep a 44 px hit area via a padded `::after`.

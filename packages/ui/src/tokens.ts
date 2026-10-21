@@ -5,7 +5,7 @@ export interface Theme {
   vars: Record<string, string>
 }
 
-/** Visual themes mapped to the UI/UX template catalog (see UIUXSakha docs). */
+/** Visual themes mapped to the UI/UX template catalog (see SakhaUI docs). */
 export const THEMES: Theme[] = [
   {
     id: 'clean',

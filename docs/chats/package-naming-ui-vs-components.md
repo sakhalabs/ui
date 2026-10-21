@@ -27,7 +27,7 @@ so the rename cost a single mechanical pass (25 files, one workspace relink, one
 | Room for a package family | ❌ Boxes you in the moment a second package ships | ✅ `@sakhalabs/icons`, `@sakhalabs/tokens`, `@sakhalabs/templates` |
 | Ecosystem convention | ⚠️ | ✅ `@radix-ui/react`, `@chakra-ui/react` are all `org/product` |
 
-**Branding is unaffected.** The product and the marketing name stay **Sakha UI**; only the
+**Branding is unaffected.** The product and the marketing name stay **Sakhā UI**; only the
 import string and the npm scope changed. (Compare Radix: *Radix UI* is the product,
 `@radix-ui` is the scope.) Since nothing was published, consumers need no migration.
 

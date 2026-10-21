@@ -1,4 +1,4 @@
-# UIUXSakha — UI/UX Template Catalog + Component Library for Sakhā Labs
+# SakhaUI — UI/UX Template Catalog + Component Library for Sakhā Labs
 
 [![npm version](https://img.shields.io/npm/v/@sakhalabs/ui.svg?label=%40sakhalabs%2Fui)](https://www.npmjs.com/package/@sakhalabs/ui)
 [![npm downloads](https://img.shields.io/npm/dm/@sakhalabs/ui.svg)](https://www.npmjs.com/package/@sakhalabs/ui)
@@ -6,7 +6,7 @@
 [![GitHub](https://img.shields.io/github/stars/sakhalabs/ui?style=flat&label=github)](https://github.com/sakhalabs/ui)
 
 A catalog of named UI/UX styles ("templates") for every kind of software Sakhā Labs builds,
-plus **Sakha UI** — a live React component library showcase built on those templates.
+plus **Sakhā UI** — a live React component library showcase built on those templates.
 Each template has a **stable ID**, a **description**, **design rules**, and a **ready-to-paste AI prompt**.
 Later, when generating UI with AI tools, you paste the template prompt + the product context block below.
 
@@ -98,7 +98,7 @@ instead of the registry:
 npm.cmd run build:ui
 
 # 2. in the other project, add a file: dependency
-npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
+npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/SakhaUI/packages/ui"
 # …or pack a versioned tarball you can commit/archive:
 npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.1.0.tgz
 ```

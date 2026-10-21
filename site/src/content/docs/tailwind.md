@@ -1,6 +1,6 @@
 ---
 title: Tailwind CSS v4
-description: Use Sakha UI alongside Tailwind CSS v4 without style conflicts.
+description: Use Sakhā UI alongside Tailwind CSS v4 without style conflicts.
 ---
 
 All Sakhā Labs projects use **Tailwind CSS v4**. This is the complete guide for combining it

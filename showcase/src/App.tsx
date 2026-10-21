@@ -54,7 +54,7 @@ export default function App() {
       <div className="app">
         <aside className="sidebar">
           <div className="brand">
-            Sakha UI
+            Sakhā UI
             <small>@sakhalabs/ui — component library for Sakhā Labs products</small>
           </div>
           <div>
@@ -70,7 +70,7 @@ export default function App() {
           <div className="sidebar-foot">
             Every preview has copy-ready code.
             <br />
-            Styles map to the UIUXSakha template catalog.
+            Styles map to the SakhaUI template catalog.
           </div>
         </aside>
 

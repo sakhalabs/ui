@@ -25,10 +25,10 @@ Installing needs no account. The package follows semver: pin an exact release wi
 Use this while you are **developing the library itself** — the consuming project symlinks to this
 repo, so a rebuild shows up instantly with no reinstall.
 
-First build the library once from the UIUXSakha repo root:
+First build the library once from the SakhaUI repo root:
 
 ```bash
-cd C:\Users\NAN\Desktop\OpenCode\UIUXSakha
+cd C:\Users\NAN\Desktop\OpenCode\SakhaUI
 npm.cmd run build:ui
 ```
 
@@ -46,7 +46,7 @@ Then point the consuming project at it:
 
 ```bash
 cd C:\path\to\PasalSakhA        # the consuming project
-npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
+npm.cmd i "@sakhalabs/ui@file:C:/Users/NAN/Desktop/OpenCode/SakhaUI/packages/ui"
 ```
 
 Or add it manually to the consuming project's `package.json` (forward slashes, no escaping):
@@ -54,7 +54,7 @@ Or add it manually to the consuming project's `package.json` (forward slashes, n
 ```json
 {
   "dependencies": {
-    "@sakhalabs/ui": "file:C:/Users/NAN/Desktop/OpenCode/UIUXSakha/packages/ui"
+    "@sakhalabs/ui": "file:C:/Users/NAN/Desktop/OpenCode/SakhaUI/packages/ui"
   }
 }
 ```
@@ -66,11 +66,11 @@ then `npm.cmd install`. npm creates a **symlink** — rebuilds of the library sh
 Better when you want something you can commit, archive, or copy to another machine:
 
 ```bash
-# in UIUXSakha:
+# in SakhaUI:
 npm.cmd pack --workspace @sakhalabs/ui     # → sakhalabs-ui-1.1.0.tgz
 
 # in the consuming project:
-npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.1.0.tgz"
+npm.cmd i "C:/Users/NAN/Desktop/OpenCode/SakhaUI/sakhalabs-ui-1.1.0.tgz"
 ```
 
 This **copies** `dist/` into `node_modules` — stable until you re-pack and reinstall to update.
@@ -85,14 +85,14 @@ source, exactly like the showcase does:
 import { fileURLToPath, URL } from 'node:url'
 resolve: {
   alias: {
-    '@sakhalabs/ui': fileURLToPath(new URL('../UIUXSakha/packages/ui/src/index.ts', import.meta.url)),
+    '@sakhalabs/ui': fileURLToPath(new URL('../SakhaUI/packages/ui/src/index.ts', import.meta.url)),
   },
 }
 ```
 
 ```jsonc
 // tsconfig.json
-"paths": { "@sakhalabs/ui": ["../UIUXSakha/packages/ui/src/index.ts"] }
+"paths": { "@sakhalabs/ui": ["../SakhaUI/packages/ui/src/index.ts"] }
 ```
 
 ---
@@ -198,7 +198,7 @@ npm update @sakhalabs/ui        # within the range in your package.json
 **Local installs** — edit components in `packages/ui/src/`, then rebuild from the repo root:
 
 ```bash
-cd C:\Users\NAN\Desktop\OpenCode\UIUXSakha
+cd C:\Users\NAN\Desktop\OpenCode\SakhaUI
 npm.cmd run build:ui
 ```
 
@@ -206,7 +206,7 @@ npm.cmd run build:ui
 - **Option C (tarball)** → re-pack and reinstall:
   ```bash
   npm.cmd pack --workspace @sakhalabs/ui
-  npm.cmd i "C:/Users/NAN/Desktop/OpenCode/UIUXSakha/sakhalabs-ui-1.1.0.tgz" --force
+  npm.cmd i "C:/Users/NAN/Desktop/OpenCode/SakhaUI/sakhalabs-ui-1.1.0.tgz" --force
   ```
 
 While iterating on components, the fastest loop is running the **showcase** next to your app —
